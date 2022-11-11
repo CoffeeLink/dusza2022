@@ -1,7 +1,7 @@
 <?php
 
 function connect_mysql() {
-    $config = require_once("config/config.php");
+    $config = require("config/config.php");
     $db = new PDO('mysql:host=' . $config['db_host'] . ';dbname=' . $config['db_name'], $config['db_user'], $config['db_password']);
     return $db;
 }
