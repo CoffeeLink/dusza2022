@@ -2,18 +2,3 @@
     Order allow,deny
     Deny from all
 </Files>
-
-<Directory  ~ "\config">
-    Order allow,deny
-    Deny from all
-</Directory>
-
-<Directory  ~ "\docs">
-    Order allow,deny
-    Deny from all
-</Directory>
-
-<Directory  ~ "\src">
-    Order allow,deny
-    Deny from all
-</Directory>

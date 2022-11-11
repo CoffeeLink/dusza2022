@@ -11,14 +11,7 @@
 </head>
 
 <body>
-<?php
-
-if (!isset($_COOKIE['token'])) {
-  header('Location: /login.php');
-} else {
-  header('Location: /');
-}
-
-?>
+  <h1>Hi</h1>
+  <button onclick="window.location.href='/login.php';">login</button>
 </body>
 </html>
