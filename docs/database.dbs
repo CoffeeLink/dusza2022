@@ -52,7 +52,7 @@
 			<column name="user_name" type="VARCHAR" length="100" jt="12" mandatory="y" />
 			<column name="first_name" type="VARCHAR" length="100" jt="12" mandatory="y" />
 			<column name="last_name" type="VARCHAR" length="100" jt="12" mandatory="y" />
-			<column name="birth_date" type="DATE" jt="91" mandatory="y" />
+			<column name="birth_date" type="DATE" jt="91" />
 			<column name="registered_at" type="DATE" jt="91" mandatory="y" >
 				<defo><![CDATA[curdate()]]></defo>
 			</column>
