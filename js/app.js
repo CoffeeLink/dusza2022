@@ -20,3 +20,19 @@ function getCookie(cname) {
     }
     return "";
 }
+
+function checkCookie(cname) {
+    let user = getCookie(cname);
+    if (user != "") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/*
+
+TODO: set cookie nézze meg hogy tartalam van e mielött beállítja
+
+
+*/

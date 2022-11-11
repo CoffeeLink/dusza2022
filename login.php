@@ -10,10 +10,10 @@
     <script defer src="/js/login.js"></script>
 </head>
 <body>
-    <form>
+    <form id="loginForm">
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
-        <input type="submit" value="Login">
+        <input type="submit" value="Login" id="#frmLogin">
     </form>
 
     

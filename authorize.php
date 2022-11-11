@@ -6,6 +6,7 @@ require_once(__DIR__ . '../vendor/autoload.php');
 $username = $_POST['username'];
 $password = $_POST['password'];
 
+
 if (empty($username) || empty($password)) {
     header('Location: /login.php');
     exit();
@@ -34,10 +35,8 @@ if (empty($username) || empty($password)) {
     
     $jwt = JWT::encode($request_data, $secret_key, 'HS512');
 
-    echo $jwt;
+    setcookie('token', $jwt, $expire_at, '/', $domainName, false, true);
+    header('Location: /');
+    
 }
-
-$config = require_once __DIR__ . '/config/config.php';
-
-
 ?>
