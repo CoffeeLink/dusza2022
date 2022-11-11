@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="MySql" id="Project-1ff" database="MySql" >
+	<schema name="duszagfq_blog_engine" >
+		<table name="articles" >
+			<column name="article_id" type="INT" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="title" type="TEXT" jt="-1" mandatory="y" />
+			<column name="description" type="TEXT" jt="-1" mandatory="y" />
+			<column name="content" type="TEXT" jt="-1" mandatory="y" />
+			<column name="author_user_id" type="INT" jt="4" mandatory="y" />
+			<column name="is_visible" type="TINYINT" length="1" jt="-6" mandatory="y" />
+			<index name="pk_articles" unique="PRIMARY_KEY" >
+				<column name="article_id" />
+			</index>
+			<index name="fk_articles_users" unique="NORMAL" >
+				<column name="author_user_id" />
+			</index>
+			<fk name="fk_articles_users" to_schema="duszagfq_blog_engine" to_table="users" >
+				<fk_column name="author_user_id" pk="user_id" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="pages" >
+			<column name="page_id" type="INT" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="parent_page_id" type="INT" jt="4" >
+				<comment><![CDATA[If parent_page_id is left empty it will be a root page]]></comment>
+			</column>
+			<column name="title" type="TEXT" jt="-1" mandatory="y" />
+			<column name="description" type="TEXT" jt="-1" />
+			<column name="content" type="TEXT" length="250" jt="-1" />
+			<column name="is_visible" type="TINYINT" length="1" jt="-6" mandatory="y" />
+			<index name="pk_pages" unique="PRIMARY_KEY" >
+				<column name="page_id" />
+			</index>
+			<index name="fk_pages_pages" unique="NORMAL" >
+				<column name="parent_page_id" />
+			</index>
+			<fk name="fk_pages_pages" to_schema="duszagfq_blog_engine" to_table="pages" >
+				<fk_column name="parent_page_id" pk="page_id" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="users" >
+			<column name="user_id" type="INT" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="email" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="password" type="TEXT" jt="-1" mandatory="y" />
+			<column name="user_name" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="first_name" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="last_name" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="birth_date" type="DATE" jt="91" />
+			<column name="registered_at" type="DATE" jt="91" mandatory="y" >
+				<defo><![CDATA[curdate()]]></defo>
+			</column>
+			<column name="permission" type="ENUM" jt="12" mandatory="y" >
+				<enumeration><![CDATA['EDITOR','MODERATOR','WEBMASTER']]></enumeration>
+			</column>
+			<column name="profile_image_url" type="TEXT" jt="-1" />
+			<index name="pk_users" unique="PRIMARY_KEY" >
+				<column name="user_id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+	</schema>
+	<connector name="MySql" database="MySql" driver_class="com.mysql.jdbc.Driver" driver_jar="mysql-connector-java-8.0.28.jar" driver_desc="Standard" host="192.168.0.37" port="3306" instance="duszagfq_blog_engine" user="temp_admin" passwd="S29ydGVmYTM0NQ==" />
+	<layout name="Main Layout" id="Layout-10d" show_relation="columns" >
+		<entity schema="duszagfq_blog_engine" name="articles" color="C1D8EE" x="96" y="368" />
+		<entity schema="duszagfq_blog_engine" name="pages" color="C1D8EE" x="352" y="80" />
+		<entity schema="duszagfq_blog_engine" name="users" color="C1D8EE" x="48" y="48" />
+	</layout>
+</project>
