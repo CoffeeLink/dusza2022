@@ -7,15 +7,12 @@
     <title>Login</title>
     <link rel="stylesheet" href="/css/main.css">
     <script defer src="/js/app.js"></script>
-    <script defer src="/js/login.js"></script>
 </head>
 <body>
-    <form id="loginForm">
+    <form action="/authorize.php" method="POST">
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
         <input type="submit" value="Login" id="#frmLogin">
     </form>
-
-    
 </body>
 </html>
