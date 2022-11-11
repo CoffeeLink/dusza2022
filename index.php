@@ -13,11 +13,5 @@
 <body>
   <h1>Hi</h1>
   <button onclick="window.location.href='/login.php';">login</button>
-  <?php
-  if (isset($_COOKIE['token'])) {
-    echo '<h1>U are logged in</h1>';
-    echo '<button onclick="setCookie("token", "logging out", 0.00001);">logout</button>';
-  }
-  ?>
 </body>
 </html>

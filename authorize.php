@@ -37,4 +37,5 @@ if (array_key_exists('username', $_POST) && array_key_exists('password', $_POST)
     header('Location: /login.php');
 }
 
+
 ?>

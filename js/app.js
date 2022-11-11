@@ -3,7 +3,7 @@ function setCookie(cname, cvalue, exdays) {
     if (exdays != 0) {
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
     } else {
-        d.setTime(d.getTime());
+        d.setTime("Thu, 01 Jan 1970 00:00:01 GMT");
     }
     let expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
@@ -32,6 +32,10 @@ function checkCookie(cname) {
     } else {
         return false;
     }
+}
+
+function delete_cookie(name) {
+  setCookie(name, "", 0);
 }
 
 /*
