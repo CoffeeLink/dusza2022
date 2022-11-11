@@ -11,6 +11,10 @@ class ComposerStaticInitd37860039c702fcf7c9c18c74d7679c8
     );
 
     public static $prefixLengthsPsr4 = array (
+        'M' => 
+        array (
+            'Michelf\\' => 8,
+        ),
         'F' => 
         array (
             'Firebase\\JWT\\' => 13,
@@ -18,6 +22,10 @@ class ComposerStaticInitd37860039c702fcf7c9c18c74d7679c8
     );
 
     public static $prefixDirsPsr4 = array (
+        'Michelf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/michelf/php-markdown/Michelf',
+        ),
         'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
