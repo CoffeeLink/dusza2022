@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="MySql" id="Project-1ff" database="MySql" >
+	<schema name="duszagfq_blog_engine" >
+		<table name="users" >
+			<column name="user_id" type="INT" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="email" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="password" type="TEXT" jt="-1" mandatory="y" />
+			<column name="user_name" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="first_name" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="last_name" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="birth_date" type="DATE" jt="91" mandatory="y" />
+			<column name="registered_at" type="DATE" jt="91" mandatory="y" >
+				<defo><![CDATA[curdate()]]></defo>
+			</column>
+			<index name="pk_users" unique="PRIMARY_KEY" >
+				<column name="user_id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+	</schema>
+	<connector name="MySql" database="MySql" driver_class="com.mysql.jdbc.Driver" driver_jar="mysql-connector-java-8.0.28.jar" driver_desc="Standard" host="192.168.0.37" port="3306" instance="duszagfq_blog_engine" user="temp_admin" passwd="S29ydGVmYTM0NQ==" />
+	<layout name="Main Layout" id="Layout-10d" show_relation="columns" >
+		<entity schema="duszagfq_blog_engine" name="users" color="C1D8EE" x="48" y="48" />
+	</layout>
+</project>
