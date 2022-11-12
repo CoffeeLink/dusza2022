@@ -21,7 +21,7 @@ include "./admin_header.php";
             <h3>Felhasználók kezelése</h3>
         </div>
         <div class="col-6">
-            <a class="btn btn-secondary hozzaadas" href="./add-page.php">Új hozzáadása</a>
+            <a class="btn btn-secondary hozzaadas" href="./page-create-user.php">Új hozzáadása</a>
         </div>
     </div>
     <!-- Adatokat megjelenítő táblázat -->

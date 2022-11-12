@@ -8,6 +8,10 @@ header {
   --bs-border-color: black;
 }
 
+input {
+  padding: 20px;
+}
+
 thead {
   background-color: #CADCF9;
 }
