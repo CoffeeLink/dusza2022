@@ -48,6 +48,23 @@ function validate_token($token) {
     }
 }
 
+function getAllPosibleLevels($permission) {
+    $AllLevels = [
+        'EDITOR' => 1,
+        'MODERATOR' => 2,
+        'WEBMASTER' => 3,
+    ];
+    $levels = [];
+    $plevel = $AllLevels[$permission];
+    foreach ($AllLevels as $key => $value) {
+        if ($value <= $plevel) {
+            $levels[] = $key;
+        }
+    }
+    return $levels;
+
+}
+
 //Megnézi hogy a felhasználo nak van-e jogosultsága, ha igen, akkor True, ha nem, akkor False, JWT token alapján
 function checkPermission($token, $permission) {
     $id = validate_token($token);
@@ -59,7 +76,10 @@ function checkPermission($token, $permission) {
         ]);
         $result = $query->fetch(PDO::FETCH_ASSOC);
         $db = null;
-        if ($result['permission'] == $permission) {
+        $perms = getAllPosibleLevels($result['permission']);
+        echo $result['permission'];
+        var_dump($perms);
+        if (in_array($permission, $perms)) {
             return true;
         } else {
             return false;
@@ -68,4 +88,3 @@ function checkPermission($token, $permission) {
         return false;
     }
 }
-
