@@ -1,5 +1,5 @@
 <?php
-require_once "lib/connection.php";
+require_once __DIR__ . "/lib/connection.php";
 
 // Might be null if the page is the root page
 $parent_page_id = $_GET['parent_page'] ?? null;

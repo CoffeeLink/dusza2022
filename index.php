@@ -1,3 +1,15 @@
+<?php
+require_once __DIR__ . "/lib/connection.php";
+
+$pdo = connect_mysql();
+
+// Get all root pages
+$sql = "SELECT * FROM pages WHERE parent_page_id IS NULL";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,5 +25,15 @@
 <body>
   <h1>Hi</h1>
   <button onclick="window.location.href='/login.php';">login</button>
+  <ul>
+    <?php
+    foreach ($pages as $page) {
+      $page_id = $page['page_id'];
+      $title = $page['title'];
+      echo "<li><a href='/view-page.php?page=$page_id'>$title</a></li>";
+    }
+    ?>
+  </ul>
+  <a href="/add-page.php">Add page</a>
 </body>
 </html>

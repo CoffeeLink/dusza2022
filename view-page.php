@@ -1,6 +1,6 @@
 <?php
 require 'vendor/autoload.php';
-require_once "lib/connection.php";
+require_once __DIR__ . "/lib/connection.php";
 use Michelf\Markdown;
 
 $page = $_GET['page'];

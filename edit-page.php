@@ -1,5 +1,5 @@
 <?php
-require "./lib/connection.php";
+require __DIR__ . "/lib/connection.php";
 
 $page_id = $_GET['page'];
 

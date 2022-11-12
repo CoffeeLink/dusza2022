@@ -1,7 +1,7 @@
 <?php
 
 use Firebase\JWT\JWT;
-require "lib/connection.php";
+require __DIR__ . "/lib/connection.php";
 require_once(__DIR__ . '../vendor/autoload.php');
 
 $username = $_POST['username'];
