@@ -68,3 +68,4 @@ function checkPermission($token, $permission) {
         return false;
     }
 }
+
