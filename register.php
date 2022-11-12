@@ -25,11 +25,11 @@ require_once(__DIR__ . '../vendor/autoload.php');
 
 if (array_key_exists('username', $_POST) and array_key_exists('password', $_POST) and array_key_exists('email', $_POST) and array_key_exists('firstname', $_POST) and array_key_exists('lastname', $_POST)) {
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = hash("sha256", $_POST['password']);
     $email = $_POST['email'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
-    registerNewUser($username, $password, $email, $firstname, $lastname);
+    registerNewUser($email, $password, $username, $firstname, $lastname);
     header('Location: /login.php');
 }
 

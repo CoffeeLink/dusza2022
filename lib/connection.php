@@ -62,7 +62,6 @@ function getAllPosibleLevels($permission) {
         }
     }
     return $levels;
-
 }
 
 //Megnézi hogy a felhasználo nak van-e jogosultsága, ha igen, akkor True, ha nem, akkor False, JWT token alapján
@@ -77,8 +76,6 @@ function checkPermission($token, $permission) {
         $result = $query->fetch(PDO::FETCH_ASSOC);
         $db = null;
         $perms = getAllPosibleLevels($result['permission']);
-        echo $result['permission'];
-        var_dump($perms);
         if (in_array($permission, $perms)) {
             return true;
         } else {
@@ -95,7 +92,7 @@ function registerNewUser($email, $password, $username, $firstName, $lastName) {
     VALUES (:email, :password, :username, :firstName, :lastName, default, "EDITOR", NULL);');
     $data = [
         'email' => $email,
-        'password' => hash('sha256', $password),
+        'password' => $password,
         'username' => $username,
         'firstName' => $firstName,
         'lastName' => $lastName,
