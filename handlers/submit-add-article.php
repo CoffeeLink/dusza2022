@@ -12,7 +12,7 @@ $sql = "INSERT INTO articles (page_id, title, description, content, author_user_
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$page_id, $title, $description, $content]);
 
-header('Location: /view-page.php?page=' . $page_id);
+header("Location: $base_url/view-page.php?page=" . $page_id);
 
 $pdo = null;
 

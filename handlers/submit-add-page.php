@@ -13,7 +13,7 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$parent_page_id, $title, $description, $content]);
 
 
-header('Location: /view-page.php?page=' . $pdo->lastInsertId());
+header("Location: $base_url/view-page.php?page=" . $pdo->lastInsertId());
 
 $pdo = null;
 ?>

@@ -1,4 +1,5 @@
 <?php
+$base_url = (require __DIR__ . "/../config/config.php")['base_url'];
 require __DIR__ . "/../lib/connection.php";
 
 $page_id = $_GET['page'];
@@ -19,7 +20,7 @@ $sql = "DELETE FROM pages WHERE page_id = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$page_id]);
 
-header('Location: /');
+header("Location: $base_url/");
 
 $pdo = null;
 
