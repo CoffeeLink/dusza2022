@@ -50,7 +50,7 @@ function validate_token($token) {
 
 function getAllPosibleLevels($permission) {
     $config = require(__DIR__."/../config/config.php");
-    $levels = $config['permission_levels'];
+    $AllLevels = $config['permission_levels'];
     $levels = [];
     $plevel = $AllLevels[$permission];
     foreach ($AllLevels as $key => $value) {
