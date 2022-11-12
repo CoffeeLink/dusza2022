@@ -2,10 +2,10 @@
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
-require_once("vendor/autoload.php");
+require_once(__DIR__."/../vendor/autoload.php");
 
 function connect_mysql() {
-    $config = require("config/config.php");
+    $config = require(__DIR__."/../config/config.php");
     $db = new PDO('mysql:host=' . $config['db_host'] . ';dbname=' . $config['db_name'], $config['db_user'], $config['db_password']);
     return $db;
 }
@@ -34,7 +34,7 @@ function get_user_by_id($id) {
 }
 
 function validate_token($token) {
-    $config = require("config/config.php");
+    $config = require(__DIR__."/../config/config.php");
     $decoded = JWT::decode($token, new Key($config['jwt_secret'], 'HS512'));
     $user = get_user_by_id($decoded->uid);
     if ($user) {

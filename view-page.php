@@ -92,6 +92,7 @@ $db = null;
     ?>
   </ul>
   <a href="/add-page.php?parent_page=<?php echo $page_id; ?>">Add subpage</a>
+  <a href="/edit-page.php?page=<?php echo $page_id; ?>">Edit page</a>
 </body>
 
 </html>
