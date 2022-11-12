@@ -33,8 +33,7 @@ if (array_key_exists('username', $_POST) && array_key_exists('password', $_POST)
         $_SESSION['jwt_token'] = $jwt;
         header("Location: $base_url/");
     } else {
-        $_SESSION['login_error'] = "Hibás felhasználónév vagy jelszó!";
-        header("Location: $base_url/login.php");
+        header("Location: $base_url/login.php?error=1");
     }
 } else {
     header("Location: $base_url/login.php");

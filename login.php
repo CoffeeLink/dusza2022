@@ -25,10 +25,9 @@ session_start();
         <input type="submit" value="Login" id="#frmLogin">
     </form>
     <?php
-
-    if (array_key_exists('login_error', $_SESSION)) {
-        echo "<p>" . $_SESSION['login_error'] . "</p>";
-        unset($_SESSION['login_error']);
+    $error = $_GET['error'] ?? null;
+    if ($error == 1) {
+        echo "<p>Invalid username or password</p>";
     }
     ?>
 </body>
