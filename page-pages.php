@@ -65,7 +65,7 @@ include __DIR__."./admin_header.php";
                     <a href="./view-page.php?page=<?= $page['page_id'] ?>" target="_blank" class="btn btn-success">
                         <i class="fa-solid fa-eye"></i>
                     </a>
-                    <a class="btn btn-warning kezeles" href="./page_articles.php?page=<?= $page['page_id'] ?>">
+                    <a class="btn btn-warning kezeles" href="./page-articles.php?page=<?= $page['page_id'] ?>">
                         <i class="fa-solid fa-rectangle-list"></i>
                     </a>
                     <a class="btn btn-primary kezeles" href="./edit-page.php?page=<?= $page['page_id'] ?>">
