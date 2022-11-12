@@ -1,5 +1,7 @@
 <?php
 
+session_start(); // Start the session.
+
 use Firebase\JWT\JWT;
 require __DIR__ . "/../lib/connection.php";
 require_once(__DIR__ . '/../vendor/autoload.php');
@@ -28,10 +30,10 @@ if (array_key_exists('username', $_POST) && array_key_exists('password', $_POST)
         ];
         
         $jwt = JWT::encode($request_data, $config['jwt_secret'], 'HS512');
-        setcookie('token', $jwt, $expire_at, '/', $domainName, false, true);
+        $_SESSION['jwt_token'] = $jwt;
         header("Location: $base_url/");
     } else {
-        setcookie('token', '', time() - 3600, '/', $domainName, false, true);
+        $_SESSION['login_error'] = "Hibás felhasználónév vagy jelszó!";
         header("Location: $base_url/login.php");
     }
 } else {

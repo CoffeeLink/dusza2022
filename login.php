@@ -3,14 +3,7 @@ require __DIR__ . "/lib/connection.php";
 require_once(__DIR__ . '../vendor/autoload.php');
 $base_url = (require __DIR__ . "/config/config.php")['base_url'];
 
-if (isset($_COOKIE['token']) and $_COOKIE['token'] != '') {
-    if (validate_token($_COOKIE['token'])) {
-        header("Location: $base_url/");
-    } else {
-        header("Location: $base_url/login.php");
-    }
-}
-
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +24,13 @@ if (isset($_COOKIE['token']) and $_COOKIE['token'] != '') {
         <input type="password" name="password" placeholder="Password">
         <input type="submit" value="Login" id="#frmLogin">
     </form>
+    <?php
+
+    if (array_key_exists('login_error', $_SESSION)) {
+        echo "<p>" . $_SESSION['login_error'] . "</p>";
+        unset($_SESSION['login_error']);
+    }
+    ?>
 </body>
 
 </html>
