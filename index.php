@@ -25,7 +25,7 @@ $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
   <h1>Hi</h1>
-  <button onclick="window.location.href='/login.php';">login</button>
+  <button onclick="window.location.href='<?php echo $base_url ?>/login.php';">login</button>
   <ul>
     <?php
     foreach ($pages as $page) {
@@ -35,7 +35,7 @@ $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     ?>
   </ul>
-  <a href="<?php echo $base_url?>/add-page.php">Add page</a>
+  <a href="<?php echo $base_url ?>/add-page.php">Add page</a>
 </body>
 
 </html>
