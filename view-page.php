@@ -115,7 +115,6 @@ $db = null;
       }
       ?>
     </ul>
-    <a href="/add-article.php?page=<?php echo $page_id; ?>">Add article</a>
 </body>
 
 </html>

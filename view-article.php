@@ -69,6 +69,8 @@ $pdo = null;
   <div>
     <?php echo Markdown::defaultTransform($content) ?>
   </div>
+  <a href="/edit-article.php?article=<?php echo $article['article_id'] ?>">Edit article</a>
+  <a href="/handlers/submit-delete-article.php?article=<?php echo $article['article_id'] ?>">Delete article</a>
 </body>
 
 </html>
