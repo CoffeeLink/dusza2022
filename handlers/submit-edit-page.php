@@ -12,7 +12,5 @@ $sql = "UPDATE pages SET title = ?, description = ?, content = ?, edited_at = NO
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$title, $description, $content, $page_id]);
 
-error_log("Page updated: " . $page_id);
-
 header('Location: /view-page.php?page=' . $page_id);
 ?>
