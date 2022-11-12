@@ -65,6 +65,13 @@ $db = null;
 </head>
 
 <body>
+  <h1>
+    <?php
+      $error = $_GET['error'] ?? null;
+      if ($error == 'page-has-subpages') {
+        echo "This page has subpages, you can't delete it";
+      }
+    ?>
   <p>Route:
     <?php
     foreach ($route as $page) {
@@ -93,6 +100,7 @@ $db = null;
   </ul>
   <a href="/add-page.php?parent_page=<?php echo $page_id; ?>">Add subpage</a>
   <a href="/edit-page.php?page=<?php echo $page_id; ?>">Edit page</a>
+  <a href="/handlers/submit-delete-page.php?page=<?php echo $page_id; ?>">Delete page</a>
 </body>
 
 </html>
