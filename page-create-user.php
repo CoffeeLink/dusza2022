@@ -24,7 +24,7 @@ include "./admin_header.php";
             <a class="btn btn-secondary hozzaadas" href="./page-users.php">Vissza</a>
         </div>
     </div>
-    <form action="">
+    <form action="./handlers/register.php" method="POST">
         <div class="container">
             <div class="mb-3 row">
                 <label for="user_name" class="col-sm-3 col-form-label">Felhasználónév:</label>
