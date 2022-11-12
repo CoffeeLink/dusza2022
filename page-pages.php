@@ -1,5 +1,5 @@
 <?php
-include "./lib/connection.php";
+include __DIR__."./lib/connection.php";
 $pdo = connect_mysql();
 $sql = "SELECT * FROM pages ORDER BY created_at DESC";
 $stmt = $pdo->prepare($sql);
@@ -11,7 +11,7 @@ while ($page = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $posts_number++;
 }
 $aktiv_menu = "oldalak";
-include "./admin_header.php";
+include __DIR__."./admin_header.php";
 ?>
 
 <!-- Tartalom -->
@@ -92,5 +92,5 @@ include "./admin_header.php";
     </div>
 </div>
 <?php
-include "./admin_footer.php";
+include __DIR__."/admin_footer.php";
 ?>
