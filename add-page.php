@@ -1,5 +1,5 @@
 <?php
-require_once "lib/connection.php";
+require_once __DIR__ . "/lib/connection.php";
 
 // Might be null if the page is the root page
 $parent_page_id = $_GET['parent_page'] ?? null;
@@ -43,9 +43,10 @@ if ($parent_page_id != null) {
     } else {
       echo "Add page";
     }
-  ?>
+    ?>
   </h1>
   <form action="/handlers/submit-add-page.php" method="post">
+    <input type="text" name="parent_page_id" value="<?php echo $parent_page_id; ?>" hidden>
     <input type="text" name="title" placeholder="Title">
     <input type="text" name="description" placeholder="Description">
     <textarea name="content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
