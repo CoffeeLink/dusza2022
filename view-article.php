@@ -56,7 +56,7 @@ $pdo = null;
   <h1>Route:
     <?php
     foreach ($route as $page) {
-      echo "<a href='$base_url/view-page.php?page={$page['page_id']}'>{$page['title']}</a> -> ";
+      echo "<a href='./view-page.php?page={$page['page_id']}'>{$page['title']}</a> -> ";
     }
     echo $title;
   ?>
@@ -70,8 +70,8 @@ $pdo = null;
   <div>
     <?php echo Markdown::defaultTransform($content) ?>
   </div>
-  <a href="<?php echo $base_url ?>/edit-article.php?article=<?php echo $article['article_id'] ?>">Edit article</a>
-  <a href="<?php echo $base_url ?>/handlers/submit-delete-article.php?article=<?php echo $article['article_id'] ?>">Delete article</a>
+  <a href="./edit-article.php?article=<?php echo $article['article_id'] ?>">Edit article</a>
+  <a href="./handlers/submit-delete-article.php?article=<?php echo $article['article_id'] ?>">Delete article</a>
 </body>
 
 </html>

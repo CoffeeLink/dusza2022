@@ -19,22 +19,22 @@ $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>main Page</title>
-  <link rel="stylesheet" href="<?php echo $base_url ?>/css/main.css">
-  <script defer src="<?php echo $base_url ?>/js/app.js"></script>
+  <link rel="stylesheet" href="./css/main.css">
+  <script defer src="./js/app.js"></script>
 </head>
 
 <body>
-  <button onclick="window.location.href='<?php echo $base_url ?>/login.php';">login</button>
+  <button onclick="window.location.href='./login.php';">login</button>
   <ul>
     <?php
     foreach ($pages as $page) {
       $page_id = $page['page_id'];
       $title = $page['title'];
-      echo "<li><a href='$base_url/view-page.php?page=$page_id'>$title</a></li>";
+      echo "<li><a href='./view-page.php?page=$page_id'>$title</a></li>";
     }
     ?>
   </ul>
-  <a href="<?php echo $base_url ?>/add-page.php">Add page</a>
+  <a href="./add-page.php">Add page</a>
 </body>
 
 </html>

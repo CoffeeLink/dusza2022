@@ -32,7 +32,7 @@ $pdo = null;
   <title>Document</title>
 </head>
 <body>
-  <form action="<?php echo $base_url ?>/handlers/submit-edit-article.php" method="POST">
+  <form action="./handlers/submit-edit-article.php" method="POST">
     <input type="hidden" name="article_id" value="<?php echo $article_id; ?>">
     <input type="text" name="title" value="<?php echo $title; ?>">
     <input type="text" name="description" value="<?php echo $description; ?>">

@@ -28,13 +28,13 @@ $title = $page['title'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
   <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-  <script defer src="<?php echo $base_url ?>/js/editor.js"></script>
+  <script defer src="./js/editor.js"></script>
   <title>Document</title>
 </head>
 
 <body>
   <h1>Add article</h1>
-  <form action="/handlers/submit-add-article.php" method="post">
+  <form action="./handlers/submit-add-article.php" method="post">
     <input type="text" name="page_id" value="<?php echo $page_id; ?>" hidden>
     <input type="text" name="title" placeholder="Title">
     <input type="text" name="description" placeholder="Description">
