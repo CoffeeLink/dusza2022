@@ -32,11 +32,11 @@ if (array_key_exists('username', $_POST) && array_key_exists('password', $_POST)
         setcookie('token', $jwt, $expire_at, '/', $domainName, false, true);
         header("Location: $base_url/");
     } else {
+        setcookie('token', '', time() - 3600, '/', $domainName, false, true);
         header("Location: $base_url/login.php");
     }
 } else {
     header("Location: $base_url/login.php");
 }
-
 
 ?>
