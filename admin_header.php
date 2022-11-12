@@ -58,28 +58,34 @@
             <hr />
             <ul class="nav nav-pills flex-column mb-auto oldalsav">
                 <li class="nav-item">
-                    <a href="#" class="nav-link link-dark" aria-current="page" id="vezerlopult">
+                    <a href="./dashboard.php" class="nav-link link-dark" aria-current="page" id="vezerlopult">
                         <i class="fa-solid fa-gauge-high icon"></i> Vezérlőpult
                     </a>
                 </li>
                 <hr />
                 <li>
-                    <a href="#" class="nav-link link-dark" id="profilom">
+                    <a href="./profile.php" class="nav-link link-dark" id="profilom">
                         <i class="fa-solid fa-user icon"></i>
                         Profilom
                     </a>
                 </li>
                 <hr />
                 <li>
-                    <a href="#" class="nav-link link-dark" id="portal_kezeles">
+                    <a href="./edit-site.php" class="nav-link link-dark" id="portal_kezeles">
                         <i class="fa-solid fa-gears icon"></i>
                         Portál kezelése
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link link-dark" id="felhasznalok">
+                    <a href="./page-users.php" class="nav-link link-dark" id="felhasznalok">
                         <i class="fa-solid fa-users icon"></i>
                         Felhasználók
+                    </a>
+                </li>
+                <li>
+                    <a href="./page-create-user.php" class="nav-link link-dark" id="felhasznaloAdd">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Felhasználó hozzáadása
                     </a>
                 </li>
                 <hr />
@@ -98,7 +104,7 @@
 
                 <hr />
                 <li>
-                    <a href="#" class="nav-link link-dark">
+                    <a href="./" class="nav-link link-dark">
                         <i class="fa-solid fa-house icon"></i>
                         Vissza az oldalra
                     </a>
