@@ -77,9 +77,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./page-create-user.php" class="nav-link link-dark" id="felhasznalok">
+                    <a href="./page-users.php" class="nav-link link-dark" id="felhasznalok">
                         <i class="fa-solid fa-users icon"></i>
                         Felhasználók
+                    </a>
+                </li>
+                <li>
+                    <a href="./page-create-user.php" class="nav-link link-dark" id="felhasznaloAdd">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Felhasználó hozzáadása
                     </a>
                 </li>
                 <hr />
