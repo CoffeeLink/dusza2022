@@ -88,3 +88,18 @@ function checkPermission($token, $permission) {
         return false;
     }
 }
+
+function registerNewUser($email, $password, $username, $firstName, $lastName) {
+    $db = connect_mysql();
+    $querry = $db->prepare('INSERT INTO users (email, password, user_name, first_name, last_name, registered_at, permission, profile_image_url)
+    VALUES (:email, :password, :username, :firstName, :lastName, default, "EDITOR", NULL);');
+    $data = [
+        'email' => $email,
+        'password' => hash('sha256', $password),
+        'username' => $username,
+        'firstName' => $firstName,
+        'lastName' => $lastName,
+    ];
+    $querry->execute($data);
+    $db = null;
+}
