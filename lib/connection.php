@@ -50,7 +50,7 @@ function validate_token($token) {
 
 function getAllPosibleLevels($permission) {
     $config = require(__DIR__."/../config/config.php");
-    $levels = $config['permission_levels'];
+    $AllLevels = $config['permission_levels'];
     $levels = [];
     $plevel = $AllLevels[$permission];
     foreach ($AllLevels as $key => $value) {
@@ -111,6 +111,11 @@ function registerNewUser($email, $password, $username, $firstName, $lastName, $p
         'lastName' => $lastName,
         'permision' => $permission
     ];
-    $querry->execute($data);
-    $db = null;
+    if ($querry->execute($data)) {
+        $db = null;
+        return true;
+    } else {
+        $db = null;
+        return false;
+    }
 }
