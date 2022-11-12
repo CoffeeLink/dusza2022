@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . "/lib/connection.php";
+$base_url = (require __DIR__ . "/config/config.php")['base_url'];
 
 // Might be null if the page is the root page
 $parent_page_id = $_GET['parent_page'] ?? null;
@@ -13,7 +14,7 @@ if ($parent_page_id != null) {
   $parent_page = $stmt->fetch(PDO::FETCH_ASSOC);
 
   if (!$parent_page) {
-    header('Location: /');
+    header("Location: $base_url/");
   }
 
   $parent_page_title = $parent_page['title'];
@@ -31,7 +32,7 @@ if ($parent_page_id != null) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
   <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-  <script defer src="/js/editor.js"></script>
+  <script defer src="<?php echo $base_url ?>/js/editor.js"></script>
   <title>Add page</title>
 </head>
 

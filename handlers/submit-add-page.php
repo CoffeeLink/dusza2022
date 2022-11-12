@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . "/../lib/connection.php";
+$base_url = (require __DIR__ . "/../config/config.php")['base_url'];
 
 $pdo = connect_mysql();
 
@@ -13,7 +14,7 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$parent_page_id, $title, $description, $content]);
 
 
-header('Location: /view-page.php?page=' . $pdo->lastInsertId());
+header("Location: $base_url/view-page.php?page=" . $pdo->lastInsertId());
 
 $pdo = null;
 ?>

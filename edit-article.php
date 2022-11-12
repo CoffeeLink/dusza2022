@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . "/lib/connection.php";
+$base_url = (require __DIR__ . "/config/config.php")['base_url'];
 
 $article_id = $_GET['article'];
 
@@ -11,7 +12,7 @@ $stmt->execute([$article_id]);
 $article = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$article) {
-  header('Location: /');
+  header("Location: $base_url/");
 }
 
 $page_id = $article['page_id'];
@@ -31,7 +32,7 @@ $pdo = null;
   <title>Document</title>
 </head>
 <body>
-  <form action="/handlers/submit-edit-article.php" method="POST">
+  <form action="<?php echo $base_url ?>/handlers/submit-edit-article.php" method="POST">
     <input type="hidden" name="article_id" value="<?php echo $article_id; ?>">
     <input type="text" name="title" value="<?php echo $title; ?>">
     <input type="text" name="description" value="<?php echo $description; ?>">

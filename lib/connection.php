@@ -49,11 +49,8 @@ function validate_token($token) {
 }
 
 function getAllPosibleLevels($permission) {
-    $AllLevels = [
-        'EDITOR' => 1,
-        'MODERATOR' => 2,
-        'WEBMASTER' => 3,
-    ];
+    $config = require(__DIR__."/../config/config.php");
+    $levels = $config['permission_levels'];
     $levels = [];
     $plevel = $AllLevels[$permission];
     foreach ($AllLevels as $key => $value) {
@@ -62,7 +59,6 @@ function getAllPosibleLevels($permission) {
         }
     }
     return $levels;
-
 }
 
 //Megnézi hogy a felhasználo nak van-e jogosultsága, ha igen, akkor True, ha nem, akkor False, JWT token alapján
@@ -77,8 +73,6 @@ function checkPermission($token, $permission) {
         $result = $query->fetch(PDO::FETCH_ASSOC);
         $db = null;
         $perms = getAllPosibleLevels($result['permission']);
-        echo $result['permission'];
-        var_dump($perms);
         if (in_array($permission, $perms)) {
             return true;
         } else {
@@ -87,4 +81,36 @@ function checkPermission($token, $permission) {
     } else {
         return false;
     }
+}
+
+function getUserLevel($token) {
+    $id = validate_token($token);
+    if ($id) {
+        $db = connect_mysql();
+        $query = $db->prepare('SELECT * FROM users WHERE user_id = :id');
+        $query->execute([
+            'id' => $id
+        ]);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        $db = null;
+        return $result['permission'];
+    } else {
+        return false;
+    }
+}
+
+function registerNewUser($email, $password, $username, $firstName, $lastName, $permission) {
+    $db = connect_mysql();
+    $querry = $db->prepare('INSERT INTO users (email, password, user_name, first_name, last_name, registered_at, permission, profile_image_url)
+    VALUES (:email, :password, :username, :firstName, :lastName, default, :permision, NULL);');
+    $data = [
+        'email' => $email,
+        'password' => $password,
+        'username' => $username,
+        'firstName' => $firstName,
+        'lastName' => $lastName,
+        'permision' => $permission
+    ];
+    $querry->execute($data);
+    $db = null;
 }

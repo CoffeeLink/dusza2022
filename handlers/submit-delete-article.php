@@ -1,4 +1,5 @@
 <?php
+$base_url = (require __DIR__ . "/../config/config.php")['base_url'];
 require __DIR__ . "/../lib/connection.php";
 
 $article_id = $_GET['article'];
@@ -16,6 +17,6 @@ $sql = "DELETE FROM articles WHERE article_id = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$article_id]);
 
-header('Location: /view-page.php?page=' . $page_id);
+header("Location: $base_url/view-page.php?page=" . $page_id);
 
 ?>

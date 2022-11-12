@@ -1,6 +1,7 @@
 <?php
 require_once 'vendor/autoload.php';
 require __DIR__ . "/lib/connection.php";
+$base_url = (require __DIR__ . "/config/config.php")['base_url'];
 use Michelf\Markdown;
 
 $page = $_GET['page'];
@@ -14,7 +15,7 @@ $stmt->execute([$page]);
 $page = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$page) {
-  header('Location: /');
+  header("Location: $base_url/");
 }
 
 $page_id = $page['page_id'];
@@ -81,7 +82,7 @@ $db = null;
     <p>Route:
       <?php
       foreach ($route as $page) {
-        echo "<a href='/view-page.php?page={$page['page_id']}'>{$page['title']}</a> / ";
+        echo "<a href='$base_url/view-page.php?page={$page['page_id']}'>{$page['title']}</a> / ";
       }
       ?>
     </p>
@@ -100,18 +101,18 @@ $db = null;
     <ul>
       <?php
       foreach ($children as $child) {
-        echo "<li><a href='/view-page.php?page={$child['page_id']}'>{$child['title']}</a></li>";
+        echo "<li><a href=$base_url/view-page.php?page={$child['page_id']}'>{$child['title']}</a></li>";
       }
       ?>
     </ul>
-    <a href="/add-page.php?parent_page=<?php echo $page_id; ?>">Add subpage</a>
-    <a href="/edit-page.php?page=<?php echo $page_id; ?>">Edit page</a>
-    <a href="/handlers/submit-delete-page.php?page=<?php echo $page_id; ?>">Delete page</a>
+    <a href="<?php echo $base_url ?>/add-page.php?parent_page=<?php echo $page_id; ?>">Add subpage</a>
+    <a href="<?php echo $base_url ?>/edit-page.php?page=<?php echo $page_id; ?>">Edit page</a>
+    <a href="<?php echo $base_url ?>/handlers/submit-delete-page.php?page=<?php echo $page_id; ?>">Delete page</a>
     <h3>Articles</h3>
     <ul>
       <?php
       foreach ($articles as $article) {
-        echo "<li><a href='/view-article.php?article={$article['article_id']}'>{$article['title']}</a></li>";
+        echo "<li><a href='$base_url/view-article.php?article={$article['article_id']}'>{$article['title']}</a></li>";
       }
       ?>
     </ul>
