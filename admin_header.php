@@ -84,13 +84,13 @@
                 </li>
                 <hr />
                 <li>
-                    <a href="#" class="nav-link link-dark" id="oldalak">
+                    <a href="./page-pages.php" class="nav-link link-dark" id="oldalak">
                         <i class="fa-solid fa-file-lines icon"></i>
                         Oldalak
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link link-dark" id="bejegyzesek">
+                    <a href="./page-articles.php" class="nav-link link-dark" id="bejegyzesek">
                         <i class="fa-solid fa-pen icon"></i>
                         Bejegyzések
                     </a>
