@@ -110,7 +110,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link link-dark">
+                    <a href="./handlers/logout.php" class="nav-link link-dark">
                         <i class="fa-solid fa-right-from-bracket icon"></i>
                         Kijelentkezés
                     </a>
