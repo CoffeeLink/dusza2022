@@ -111,6 +111,11 @@ function registerNewUser($email, $password, $username, $firstName, $lastName, $p
         'lastName' => $lastName,
         'permision' => $permission
     ];
-    $querry->execute($data);
-    $db = null;
+    if ($querry->execute($data)) {
+        $db = null;
+        return true;
+    } else {
+        $db = null;
+        return false;
+    }
 }

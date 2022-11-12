@@ -14,12 +14,10 @@ $password = hash('sha256', $_POST['password']);
 if (array_key_exists('username', $_POST) && array_key_exists('password', $_POST)) {
     $user = authorize($username, $password);
     if ($user) {
-        var_dump($user);
         $date = new DateTime();
         $expire_at = $date->modify("+1 day")->getTimestamp();
         $domainName = $_SERVER['HTTP_HOST'];
         $uid = $user['user_id'];
-        var_dump($config);
         
         $request_data = [
             'iat' => time(),
