@@ -19,12 +19,12 @@ if (array_key_exists('jwt_token', $_SESSION) and checkPermission($_SESSION['jwt_
     if (array_key_exists('username', $_POST) && array_key_exists('password', $_POST) && array_key_exists('email', $_POST) && array_key_exists('first_name', $_POST) && array_key_exists('last_name', $_POST) && array_key_exists('permission', $_POST)) {
         $user = registerNewUser($email, $password, $username, $first_name, $last_name, $permission);
         if ($user) {
-            //TODO: redirect to user list
+            header("location: $base_url/page-users.php");
         } else {
-            //TODO: error handling
+            header("location: $base_url/something-went-wrong.php?errorTitle=Regisztrácios Hiba&errorMessage=Hiba történt a felhasználó létrehozásakor!&errorCode=MYSQL_ERROR");
         }
     } else {
-        //TODO: error message
+        header("location: $base_url/something-went-wrong.php?errorTitle=Regisztrácios Hiba&errorMessage=Hiba történt a felhasználó létrehozásakor!&errorCode=POST_ERROR");
     }
 } else {
     header("Location: https://www.youtube.com/watch?v=dQw4w9WgXcQ");
