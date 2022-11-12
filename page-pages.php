@@ -41,9 +41,9 @@ include __DIR__."./admin_header.php";
         <!-- Tartalmak megjelenítése -->
         <tbody>
             <?php foreach ($pages as $page) {
-                $editedUser = get_user_by_id($page['edited_by_user_id']);
+                $editedUser = getUserById($page['edited_by_user_id']);
                 $editedUserName = $editedUser['last_name'] . ' ' . $editedUser['first_name'];
-                $createdUser = get_user_by_id($page['edited_by_user_id']);
+                $createdUser = getUserById($page['edited_by_user_id']);
                 $createdUserName = $createdUser['last_name'] . ' ' . $createdUser['first_name'];
             ?>
 

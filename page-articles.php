@@ -51,9 +51,9 @@ include __DIR__."/admin_header.php";
         <!-- Tartalmak megjelenítése -->
         <tbody>
             <?php foreach ($articles as $article) {
-                $user = get_user_by_id($article['edited_by_user_id']);
+                $user = getUserById($article['edited_by_user_id']);
                 $editedBy = $user['last_name'] . ' ' . $user['first_name'];
-                $user = get_user_by_id($article['author_user_id']);
+                $user = getUserById($article['author_user_id']);
                 $createdBy = $user['last_name'] . ' ' . $user['first_name'];
             ?>
 

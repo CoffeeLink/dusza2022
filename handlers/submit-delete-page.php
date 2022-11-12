@@ -2,6 +2,16 @@
 $base_url = (require __DIR__ . "/../config/config.php")['base_url'];
 require __DIR__ . "/../lib/connection.php";
 
+session_start(); // Start the session.
+
+$token = $_SESSION['jwt_token'] ?? null;
+
+if(!checkPermission($_SESSION['jwt_token'], 'MODERATOR')) {
+    header("Location: $base_url/");
+
+    return;
+}
+
 $page_id = $_GET['page'];
 
 $pdo = connect_mysql();
