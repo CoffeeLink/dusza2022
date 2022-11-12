@@ -1,15 +1,5 @@
 <?php
 include "./lib/connection.php";
-$pdo = connect_mysql();
-$sql = "SELECT * FROM users ORDER BY user_name ASC";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$users = [];
-$posts_number = 0;
-while ($user = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $users[] = $user;
-    $posts_number++;
-}
 $aktiv_menu = "felhasznaloAdd";
 include "./admin_header.php";
 ?>
@@ -27,9 +17,9 @@ include "./admin_header.php";
     <form action="./handlers/register.php" method="POST">
         <div class="container">
             <div class="mb-3 row">
-                <label for="user_name" class="col-sm-3 col-form-label">Felhasználónév:</label>
+                <label for="username" class="col-sm-3 col-form-label">Felhasználónév:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="user_name" name="user_name" placeholder="john_doe"
+                    <input type="text" class="form-control" id="user_name" name="username" placeholder="john_doe"
                         required>
                 </div>
             </div>
@@ -69,7 +59,7 @@ include "./admin_header.php";
             <div class="mb-3 row">
                 <label for="permission" class="col-sm-3 col-form-label">Jogosultsági szint:</label>
                 <div class="col-sm-9">
-                    <select class="form-select" id="permission">
+                    <select class="form-select" id="permission" name="permission">
                         <option value="EDITOR" selected>Szerkesztő</option>
                         <option value="MODERATOR">Moderátor</option>
                         <option value="WEBMASTER">Webmester</option>
