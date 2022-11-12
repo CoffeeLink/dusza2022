@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/lib/connection.php";
+require __DIR__ . "/lib/connection.php";
 
 $pdo = connect_mysql();
 

@@ -5,6 +5,7 @@
 			<column name="article_id" type="INT" jt="4" mandatory="y" >
 				<identity><![CDATA[AUTO_INCREMENT]]></identity>
 			</column>
+			<column name="page_id" type="INT" jt="4" mandatory="y" />
 			<column name="title" type="TEXT" jt="-1" mandatory="y" />
 			<column name="description" type="TEXT" jt="-1" mandatory="y" />
 			<column name="content" type="TEXT" jt="-1" mandatory="y" />
@@ -26,11 +27,17 @@
 			<index name="fk_articles_users_2" unique="NORMAL" >
 				<column name="edited_by_user_id" />
 			</index>
+			<index name="fk_articles_pages" unique="NORMAL" >
+				<column name="page_id" />
+			</index>
 			<fk name="fk_articles_users" to_schema="duszagfq_blog_engine" to_table="users" >
 				<fk_column name="author_user_id" pk="user_id" />
 			</fk>
 			<fk name="fk_articles_users_2" to_schema="duszagfq_blog_engine" to_table="users" >
 				<fk_column name="edited_by_user_id" pk="user_id" />
+			</fk>
+			<fk name="fk_articles_pages" to_schema="duszagfq_blog_engine" to_table="pages" >
+				<fk_column name="page_id" pk="page_id" />
 			</fk>
 			<options><![CDATA[engine=InnoDB]]></options>
 		</table>
@@ -110,6 +117,18 @@ VALUES ("example@example.com", "d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3
 		</script>
 		<script name="SQL_Editor_001" id="Editor-bba" language="SQL" >
 			<string><![CDATA[select * from pages;]]></string>
+		</script>
+		<script name="SQL_Editor_002" id="Editor-9ca" language="SQL" >
+			<string><![CDATA[INSERT INTO articles (title, description, content, author_user_id, is_visible, created_at, edited_at, edited_by_user_id)
+VALUES ("Example title", "This is a test description", "Asdsdsds haertea heahtah etrahtea hteah  taerh taeh a h ah h teat h tha t  htae ht a ht ah t  5th taerhtearhteh h tea  hta  teah h t  hta t!", 1, false, default, default, 1);]]></string>
+		</script>
+		<script name="SQL_Editor_003" id="Editor-24cc" language="SQL" >
+			<string><![CDATA[INSERT INTO pages (parent_page_id, title, description, content, is_visible, created_at, edited_at, created_by_user_id, edited_by_user_id)
+VALUES (2, "Example title", "This is a test description", "Asdsdsds haertea heahtah etrahtea hteah  taerh taeh a h ah h teat h tha t  htae ht a ht ah t  5th taerhtearhteh h tea  hta  teah h t  hta t!", false, default, default, 1, 1);]]></string>
+		</script>
+		<script name="SQL_Editor_005" id="Editor-256e" language="SQL" >
+			<string><![CDATA[UPDATE articles
+SET page_id = 2;]]></string>
 		</script>
 	</layout>
 </project>
