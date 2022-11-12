@@ -24,7 +24,6 @@ $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-  <h1>Hi</h1>
   <button onclick="window.location.href='<?php echo $base_url ?>/login.php';">login</button>
   <ul>
     <?php
