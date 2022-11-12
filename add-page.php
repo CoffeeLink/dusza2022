@@ -31,7 +31,7 @@ if ($parent_page_id != null) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
   <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-  <script defer src="/js/add-page.js"></script>
+  <script defer src="/js/editor.js"></script>
   <title>Add page</title>
 </head>
 
@@ -48,7 +48,7 @@ if ($parent_page_id != null) {
   <form action="/handlers/submit-add-page.php" method="post">
     <input type="text" name="title" placeholder="Title">
     <input type="text" name="description" placeholder="Description">
-    <textarea name="content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
+    <textarea name="content" id="content-editor" cols="30" rows="10" placeholder="Content"></textarea>
     <input type="submit" value="Add page">
   </form>
 </body>
