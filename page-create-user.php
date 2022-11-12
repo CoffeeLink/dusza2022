@@ -10,7 +10,7 @@ while ($user = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $users[] = $user;
     $posts_number++;
 }
-$aktiv_menu = "felhasznalok";
+$aktiv_menu = "felhasznaloAdd";
 include "./admin_header.php";
 ?>
 
