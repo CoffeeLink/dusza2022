@@ -49,11 +49,8 @@ function validate_token($token) {
 }
 
 function getAllPosibleLevels($permission) {
-    $AllLevels = [
-        'EDITOR' => 1,
-        'MODERATOR' => 2,
-        'WEBMASTER' => 3,
-    ];
+    $config = require(__DIR__."/../config/config.php");
+    $levels = $config['permission_levels'];
     $levels = [];
     $plevel = $AllLevels[$permission];
     foreach ($AllLevels as $key => $value) {
