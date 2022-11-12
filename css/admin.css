@@ -1,0 +1,90 @@
+body {
+  font-size: 105%;
+  background-color: #E2EAFC;
+}
+
+/* Header elválasztó csik megjelenítése */
+header {
+  --bs-border-color: black;
+}
+
+thead {
+  background-color: #CADCF9;
+}
+
+tr {
+  border: 1px solid black;
+}
+
+tr td {
+  align-items: center;
+  vertical-align: middle;
+}
+
+/* Táblázat  */
+tbody tr:nth-child(even) {
+  background-color: #D9F0FF;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #CAE5F6;
+}
+
+tbody tr:hover {
+  background-color: #acd2f5;
+}
+/* A tartalom és az oldalsáv helyének fixálása */
+.befoglalo {
+  display: flex;
+  align-items: stretch;
+}
+
+.container-fluid {
+  padding: 3vw;
+}
+
+.elsosor {
+  padding-bottom: 20px;
+}
+
+.hozzaadas {
+  float: right;
+}
+
+.icon {
+  padding-right: 8px;
+}
+
+.id {
+  text-align: center;
+  font-weight: bold;
+}
+
+.kezeles {
+  margin: 0px 3px;
+}
+
+.lapoz {
+  text-align: right;
+}
+
+/* Oldalsáv dizájnolása */
+.oldalsav_div {
+  margin-top: 10px;
+}
+
+.oldalsav li {
+  border-radius: 5px;
+}
+.oldalsav li:hover{
+  background-color: #c9d9f5;
+}
+
+.oldalsav li:active{
+  background-color: #bdcbf4;
+}
+
+/* Profilkép körvonala */
+.profile_pic {
+  border: 1px solid black
+}

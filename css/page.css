@@ -1,0 +1,55 @@
+body {
+  background-color: #e9f1fb; 
+}
+
+/* Szín beállítása a navigációs sorok elemeinek */
+footer .nav-link {
+  color: white;
+}
+
+footer .nav-link:hover {
+  color: #e9f1fb;
+}
+
+header .nav-link {
+  color: black;
+}
+
+h1 {
+  text-align: center; 
+  padding: 35px; 
+}
+
+/* Cikkek megjelenítésének beállítása */
+.card {
+  padding: 25px;
+  margin: 14px 0px; 
+}
+
+/* Képek belső margójának beállítása */
+.img-fluid {
+  padding-bottom: 20px;
+}
+
+/* Szerző és közzététel idejének stílusozása */
+.info {
+  padding: 10px 0px;
+  letter-spacing: 1px;
+  color: grey;
+}
+
+/* footer háttérszínének beállítása */
+.kulso {
+  background-color: #333333;
+}
+
+/* Keresés mezőnek bal oldali belső margó létrehozása */
+.search-item {
+  padding-left: 20px;
+}
+
+/* Tovább olvasom gomb beállítása */
+.tovabb-olvasom {
+  border-radius: 3px;
+  background-color: #3f82d3;
+}
