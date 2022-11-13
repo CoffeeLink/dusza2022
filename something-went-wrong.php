@@ -1,8 +1,11 @@
 <?php
 
+//TODO: 1. legyen értelmük :D
 $errorTitle = $_GET['errorTitle'] ?? 'Hiba történt';
 $errorDescription = $_GET['errorDescription'] ?? 'Hiba történt';
-$errorCode = $_GET['errorCode'] ?? '500';
+$errorCode = $_GET['errorCode'] ?? 'ISMERETLEN';
+$page_title = $errorTitle;
+
 include __DIR__ . "/header.php";
 ?>
 <div class="row py-5 error_kulso">
