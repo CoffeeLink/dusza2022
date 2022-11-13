@@ -2,6 +2,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 require __DIR__ . "/lib/utils.php";
 $base_url = (require __DIR__ . "/config/config.php")['base_url'];
+
 use Michelf\Markdown;
 
 $page = $_GET['page'];
@@ -57,66 +58,95 @@ $sql = "SELECT * FROM articles WHERE page_id = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$page_id]);
 $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$page_title = $title;
 
 $db = null;
+
+
+
+include __DIR__ . "/header.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+<?php
+$error = $_GET['error'] ?? null;
+if ($error == 'page-has-subpages') {
+  echo "This page has subpages, you can't delete it";
+}
+?>
+<div class="row">
 
-<body>
-  <h1>
-    <?php
-    $error = $_GET['error'] ?? null;
-    if ($error == 'page-has-subpages') {
-      echo "This page has subpages, you can't delete it";
-    }
-    ?>
-    <p>Route:
-      <?php
+    <h1 class="focim"><?= htmlspecialchars($title); ?></h1>
+
+    <div class="col-6">
+        <h5>Elérési útvonal:
+            <?php
       foreach ($route as $page) {
         echo "<a href='./view-page.php?page=" . htmlspecialchars($page['page_id']) . "'>" . htmlspecialchars($page['title']) . "</a> / ";
       }
       ?>
-    </p>
-    <h1>
-      <?php echo htmlspecialchars($title); ?>
-    </h1>
-    <h2>
-      <?php echo htmlspecialchars($description); ?>
-    </h2>
-    <div>
-      <?php
-      echo Markdown::defaultTransform($content);
-      ?>
+        </h5>
     </div>
-    <h3>Childrens</h3>
-    <ul>
-      <?php
-      foreach ($children as $child) {
-        echo "<li><a href='./view-page.php?page=" . htmlspecialchars($child['page_id']) . "'>" . htmlspecialchars($child['title']) . "</a></li>";
-      }
-      ?>
-    </ul>
-    <a href="./add-page.php?parent_page=<?php echo htmlspecialchars($page_id); ?>">Add subpage</a>
-    <a href="./edit-page.php?page=<?php echo htmlspecialchars($page_id); ?>">Edit page</a>
-    <a href="./handlers/submit-delete-page.php?page=<?php echo htmlspecialchars($page_id); ?>">Delete page</a>
-    <h3>Articles</h3>
-    <ul>
-      <?php
-      foreach ($articles as $article) {
-        echo "<li><a href='./view-article.php?article=" . htmlspecialchars($article['article_id']) . "'>" . htmlspecialchars($article['title']) . "</a></li>";
-      }
-      ?>
-    </ul>
-    <a href="./add-article.php?page=<?php echo htmlspecialchars($page_id); ?>">Add article</a>
-</body>
+    <div class="col-6">
+        <a class="btn btn-danger jobbra mx-1"
+            href="./handlers/submit-delete-page.php?page=<?php echo htmlspecialchars($page_id); ?>">Oldal törlése</a>
+        <a class="btn btn-success jobbra mx-1"
+            href="./edit-page.php?page=<?php echo htmlspecialchars($page_id); ?>">Oldal szerkesztése</a>
+        <a class="btn btn-primary jobbra mx-1"
+            href="./add-article.php?page=<?php echo htmlspecialchars($page_id); ?>">Cikk hozzáadása</a>
+        <a class="btn btn-primary jobbra mx-1"
+            href="./add-page.php?parent_page=<?php echo htmlspecialchars($page_id); ?>">Aloldal hozzáadása</a>
 
-</html>
+    </div>
+</div>
+
+<h3 class="py-3">
+    <?php echo htmlspecialchars($description); ?>
+</h3>
+
+<div class="p-5 tartalom">
+    <?php
+  echo Markdown::defaultTransform($content);
+  ?>
+</div>
+
+<div class="row">
+    <?php foreach ($articles as $article) {
+    $createdUser = getUserById($article['author_user_id']);
+    $createdUserName = $createdUser['last_name'] . ' ' . $createdUser['first_name'];
+  ?>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card">
+            <!-- Indexkép -->
+            <img class="img-fluid" src="./img/default_image.png" alt="Indexkép" />
+
+            <!-- Bejegyzés megjelenő adatai -->
+            <h3><?= $article['title'] ?></h3>
+            <p class="info"><?= $createdUserName ?> | <?= $article['created_at'] ?></p>
+            <p class="tartalom">
+                <?= $article['description'] ?>
+            </p>
+
+            <!-- Tovább olvasom gomb -->
+            <div class="col-6">
+                <a href="#">
+                    <button type="button" class="btn btn-primary tovabb-olvasom">
+                        Tovább olvasom
+                    </button></a>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+    </ul>
+    <h3 class="py-3">Aloldalak:</h3>
+    <ul class="list-group">
+        <?php
+    foreach ($children as $child) {
+      echo "<li class='list-group-item'><a class='text-decoration-none' href='./view-page.php?page=" . htmlspecialchars($child['page_id']) . "'><b>" . htmlspecialchars($child['title']) . "</b> - " . $child['description'] . "</a></li>";
+    }
+    ?>
+</div>
+
+<?php
+include __DIR__ . "/footer.php";
+?>
