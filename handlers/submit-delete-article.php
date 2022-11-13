@@ -16,7 +16,7 @@ $stmt->execute([$article_id]);
 $article = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if(!checkPermission($token, 'EDITOR') && getUserId($_SESSION['jwt_token']) != $article['author_user_id']) {
-  header("Location: $base_url/");
+  header("Location: $base_url/something-went-wrong.php?errorTitle=You%20do%20not%20have%20permission%20to%20delete%20this%20article.&errorDescription=You%20do%20not%20have%20permission%20to%20delete%20this%20article.&errorCode=403");
 
   return;
 }
