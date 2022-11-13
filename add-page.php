@@ -63,7 +63,7 @@ include __DIR__ . "/modules/header.php";
         <?php } else { ?>
         <label for="parent" class="col-12 col-sm-3 col-form-label">Szülő oldal:</label>
         <div class="col-12 col-sm-9">
-          <select class="form-select" id="parent" aria-label="Default select example">
+          <select class="form-select" id="parent" name="parent_page_id" aria-label="Default select example">
             <option value="0" selected>Nincs szülő elem</option>
             <?php foreach ($pages as $page) { ?>
               <option value="<?= htmlspecialchars($page['page_id']); ?>"><?= htmlspecialchars($page['title']); ?></option>
@@ -88,14 +88,14 @@ include __DIR__ . "/modules/header.php";
         <label for="img_url" class="col-12 col-sm-3 col-form-label">Kép url:</label>
         <div class="col-12 col-sm-9">
           <input type="url" class="form-control" name="img_url" id="img_url"
-            placeholder="https://www.example.com/image.jpg" required>
+            placeholder="https://www.example.com/image.jpg">
         </div>
       </div>
       <div class="mb-3 row">
         <label for="banner_img_url" class="col-12 col-sm-3 col-form-label">Banner kép url:</label>
         <div class="col-12 col-sm-9">
           <input type="url" class="form-control" name="banner_img_url" id="banner_img_url"
-            placeholder="https://www.example.com/banner-image.jpg" required>
+            placeholder="https://www.example.com/banner-image.jpg">
         </div>
       </div>
       <div class="mb-3 row">
