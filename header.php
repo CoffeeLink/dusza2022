@@ -13,9 +13,12 @@
     <!-- Font Awesome behívása -->
     <script src="https://kit.fontawesome.com/df92ea1e57.js" crossorigin="anonymous"></script>
 
+    <!-- Saját JavaScript behívása -->
+    <script defer src="./js/app.js"></script>
+
     <!-- Saját CSS behívása -->
     <link rel="stylesheet" href="./css/page.css" />
-    <title>Blogmotor</title>
+    <title><?= $page_title ?></title>
 </head>
 
 <body>
@@ -36,7 +39,7 @@
                 <li class="nav-item"><a href="#" class="nav-link">Oldal1</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Oldal2</a></li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Bejelentkezés</a>
+                    <a href="./login.php" class="nav-link">Bejelentkezés</a>
                 </li>
                 <li class="nav-item search-item">
                     <input type="search" class="form-control" placeholder="Keresés" aria-label="Search" />

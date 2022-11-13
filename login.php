@@ -2,28 +2,39 @@
 require __DIR__ . "/lib/utils.php";
 require_once __DIR__ . '/vendor/autoload.php';
 $base_url = (require __DIR__ . "/config/config.php")['base_url'];
-
+$page_title = "Bejeletkezés";
 session_start();
+include __DIR__ . "/header.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="./css/main.css">
-    <script defer src="./js/app.js"></script>
-</head>
-
 <body>
-    <form action="./handlers/authorize.php" method="POST">
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit" value="Login" id="#frmLogin">
-    </form>
+    <div class="row">
+        <div class="col-lg-3 col-md-2 col-sm-1"></div>
+        <div class="col-12 col-lg-6 col-md-8 col-sm-10 border border-info rounded bg-info bg-opacity-10 px-4">
+            <h1 class="text-center">Bejelentkezés</h1>
+            <form action="./handlers/authorize.php" method="POST">
+                <div class="mb-3 row">
+                    <label for="username" class="col-12 col-sm-3 col-form-label">Felhasználónév:</label>
+                    <div class="col-12 col-sm-9">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="john_doe"
+                            required>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="email" class="col-12 col-sm-3 col-form-label">Jelszó:</label>
+                    <div class="col-12 col-sm-9">
+                        <input type="password" class="form-control" name="password" placeholder="••••••••" required>
+                    </div>
+
+                    <input class="btn btn-primary teljes my-4 py-2" type="submit" value="Bejelentkezés" id="#frmLogin">
+
+            </form>
+
+        </div>
+        <div class="col-lg-3 col-md-2 col-sm-1"></div>
+    </div>
+    </div>
+
     <?php
     $error = $_GET['error'] ?? null;
     if ($error == 1) {
