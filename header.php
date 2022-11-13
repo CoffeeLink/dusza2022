@@ -20,8 +20,7 @@
     <link rel="stylesheet" href="./css/page.css" />
     <title><?= $page_title ?></title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <?php include __DIR__ . "/head.php" ?>
 </head>
 
 <body>
@@ -30,7 +29,7 @@
         <!-- Navigációs sor behívása -->
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
             <!-- Weboldal főcímének megjelenítése -->
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <a href="./" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                 <span class="fs-4">Weboldal címe</span>
             </a>
 

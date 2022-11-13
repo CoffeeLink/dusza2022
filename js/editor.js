@@ -1,3 +1,7 @@
-var simplemde = new SimpleMDE({ element: document.getElementById("content-editor") });
-simplemde.value("");
-console.log("SimpleMDE loaded");
+var element = document.getElementById('content-editor');
+
+if (element) {
+  var simplemde = new SimpleMDE({ element });
+  simplemde.value("");
+  console.log("SimpleMDE loaded");
+}
