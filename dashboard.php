@@ -23,7 +23,7 @@ while ($article = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $posts_number++;
 }
 $aktiv_menu = "vezerlopult";
-include __DIR__ . "\modules\admin-header.php";
+include __DIR__ . "/modules/admin-header.php";
 ?>
 
 <!-- Tartalom -->
