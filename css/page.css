@@ -26,6 +26,11 @@ h1 {
   margin: 14px 0px; 
 }
 
+.description {
+  text-align: center;
+}
+
+/* Hiba oldal kinézete */
 .error {
   border-radius: 5px;
   background-color: #3f82d3;
@@ -34,6 +39,7 @@ h1 {
 .error_kulso {
   font-size: larger;
 }
+
 
 .focim {
   padding-bottom: 75px;
@@ -44,6 +50,11 @@ h1 {
   padding-bottom: 20px;
 }
 
+.hover-white:hover {
+  background-color: #ffffffd5;
+  border-radius: 5px;
+}
+
 /* Szerző és közzététel idejének stílusozása */
 .info {
   padding: 10px 0px;
@@ -51,8 +62,13 @@ h1 {
   color: grey;
 }
 
+/* Jobbra igazítás */
 .jobbra {
   float: right;
+}
+
+.jobbra-szoveg {
+  text-align: right;
 }
 
 /* footer háttérszínének beállítása */

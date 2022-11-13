@@ -9,32 +9,51 @@ $sql = "SELECT * FROM pages WHERE parent_page_id IS NULL";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$page_title = "Főoldal";
+include __DIR__ . "/modules/header.php";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>main Page</title>
-  <link rel="stylesheet" href="./css/main.css">
-  <script defer src="./js/app.js"></script>
-</head>
+<!-- Általános információk -->
+<h1>Weboldal neve</h1>
+<h3 class="description pb-3">Bemutatkozó szöveg</h3>
 
-<body>
-  <button onclick="window.location.href='./login.php';">login</button>
-  <ul>
-    <?php
-    foreach ($pages as $page) {
-      $page_id = $page['page_id'];
-      $title = $page['title'];
-      echo "<li><a href='./view-page.php?page=" . htmlspecialchars($page_id) . "'>$title</a></li>";
-    }
-    ?>
-  </ul>
-  <a href="./add-page.php">Add page</a>
-</body>
+<!-- Oldalak kilistázása -->
+<h4>Oldalaink:</h4>
+<?php
+foreach ($pages as $page) {
+  $page_id = $page['page_id'];
+  $title = $page['title'];
+  $description = $page['description'];
+  $time = $page['created_at'];
+?>
+<div class="row">
+    <a class="text-decoration-none text-dark hover-white mb-2"
+        href="./view-page.php?page=<?php echo htmlspecialchars($page_id) ?>">
+        <h3 class=" pt-3"><?= htmlspecialchars($title) ?></h3>
+        <div class="row">
+            <div class="col-10">
+                <p class="fs-5"><?= htmlspecialchars($description) ?></p>
+            </div>
+            <div class="col-2">
+                <p class="jobbra-szoveg"><i><?= htmlspecialchars($time) ?></i></p>
+            </div>
+        </div>
+    </a>
+    <hr>
+</div>
 
-</html>
+
+<?php
+}
+?>
+
+<!-- Oldal hozzáadása gomb -->
+<a class="btn btn-success" href="./add-page.php">Oldal hozzáadása</a>
+
+</a>
+<?php
+include __DIR__ . "/modules/footer.php";
+?>

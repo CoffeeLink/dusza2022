@@ -49,8 +49,7 @@ $settings = json_decode(file_get_contents(__DIR__ . "/../settings/settings.json"
                 <li class="nav-item">
                     <a href="./" class="nav-link">Főoldal</a>
                 </li>
-                <li class="nav-item"><a href="#" class="nav-link">Oldal1</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Oldal2</a></li>
+                <li class="nav-item"><a href="./dashboard.php" class="nav-link">Vezérlőpult</a></li>
                 <li class="nav-item">
                     <?php if (isset($_SESSION['jwt_token'])): ?>
                     <a href="./handlers/logout.php" class="nav-link">Kijelentkezés</a>
