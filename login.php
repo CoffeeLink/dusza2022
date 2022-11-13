@@ -28,21 +28,24 @@ include __DIR__ . "/modules/header.php";
                         <input type="password" class="form-control" name="password" placeholder="••••••••" required>
                     </div>
 
+
                     <input class="btn btn-primary teljes my-4 py-2" type="submit" value="Bejelentkezés" id="#frmLogin">
             </form>
+            <?php
+            $error = $_GET['error'] ?? null;
+            if ($error == 1) {
+                echo '<div class="alert alert-danger" role="alert">
+                Sikertelen bejelentkezés! Próbáld újra!
+            </div>';
+            }
+            ?>
+
         </div>
 
 
         <div class="col-xl-3 col-lg-2 col-sm-0"></div>
     </div>
     </div>
-
-    <?php
-    $error = $_GET['error'] ?? null;
-    if ($error == 1) {
-        echo "<p>Invalid username or password</p>";
-    }
-    ?>
 </body>
 
 </html>
