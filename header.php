@@ -29,7 +29,7 @@
         <!-- Navigációs sor behívása -->
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
             <!-- Weboldal főcímének megjelenítése -->
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <a href="./" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                 <span class="fs-4">Weboldal címe</span>
             </a>
 

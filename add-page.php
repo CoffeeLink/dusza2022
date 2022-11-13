@@ -42,7 +42,7 @@ include __DIR__ . "/header.php";
             <h1>
                 <?php
                 if ($parent_page_id != null) {
-                    echo "Oldal hozzáadása ehhez: <?= htmlspecialchars($title); ?>";
+                    echo "Oldal hozzáadása ehhez: <?= htmlspecialchars($parent_page_title); ?>";
                 } else {
                 echo "Oldal hozzáadása";
                 }
