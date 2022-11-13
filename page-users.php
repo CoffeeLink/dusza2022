@@ -76,9 +76,10 @@ include __DIR__ . "/modules/admin-header.php";
                     <?= htmlspecialchars($user['registered_at']) ?>
                 </td>
                 <td>
-                    <a class="btn btn-primary kezeles" href="./edit-page.php?page=<?= htmlspecialchars($user['user_id']) ?>">
+                    <a class="btn btn-primary kezeles"
+                        href="./edit-user.php?user=<?= htmlspecialchars($user['user_id']) ?>">
                         <i class="fa-solid fa-edit"></i></a><a class="btn btn-danger kezeles"
-                        href="./handlers/submit-delete-page.php?page=<?= htmlspecialchars($user['user_id']) ?>">
+                        href="./handlers/submit-delete-user.php?user=<?= htmlspecialchars($user['user_id']) ?>">
                         <i class="fa-solid fa-ban"></i>
                     </a>
                 </td>
@@ -90,7 +91,8 @@ include __DIR__ . "/modules/admin-header.php";
     </table>
     <!-- Lapozás a következő oldalra -->
     <div class="lapoz">
-        <span class="px-3">Megjelenítve: <b>1-<?= htmlspecialchars($posts_number) ?></b>/<?= htmlspecialchars($posts_number) ?></span>
+        <span class="px-3">Megjelenítve:
+            <b>1-<?= htmlspecialchars($posts_number) ?></b>/<?= htmlspecialchars($posts_number) ?></span>
         <button class="btn btn-secondary">
             <i class="fa-solid fa-arrow-left"></i>
         </button>
