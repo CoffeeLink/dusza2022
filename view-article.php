@@ -14,7 +14,7 @@ $stmt->execute([$article]);
 $article = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$article) {
-  header("Location: $base_url/");
+  header("Location: $base_url/something-went-wrong.php?errorTitle=Page%20not%20found&errorDescription=The%20page%20you%20are%20looking%20for%20does%20not%20exist.&errorCode=404");
 }
 
 $page_id = $article['page_id'];
