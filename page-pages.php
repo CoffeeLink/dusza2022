@@ -36,6 +36,7 @@ include __DIR__ . "/admin-header.php";
                 <th>Legutóbbi módosítás</th>
                 <th>Szerző</th>
                 <th>Kezelés</th>
+                <th>Publikálás</th>
             </tr>
         </thead>
         <!-- Tartalmak megjelenítése -->
@@ -59,9 +60,9 @@ include __DIR__ . "/admin-header.php";
                 if ($page['is_visible'] == 1) {
                     echo "Publikus";
                 } else {
-                    echo "Piszkozat";
+                    echo "Rejtett";
                 }
-                ?>
+                    ?>
                 </td>
                 <td>
                     <?= htmlspecialchars($page['created_at']) ?>
@@ -74,17 +75,33 @@ include __DIR__ . "/admin-header.php";
                     <?= htmlspecialchars($editedUserName) ?>
                 </td>
                 <td>
-                    <a href="./view-page.php?page=<?= htmlspecialchars($page['page_id']) ?>" target="_blank" class="btn btn-success">
+                    <a href="./view-page.php?page=<?= htmlspecialchars($page['page_id']) ?>" target="_blank"
+                        class="btn btn-success">
                         <i class="fa-solid fa-eye"></i>
                     </a>
-                    <a class="btn btn-warning kezeles" href="./page-articles.php?page=<?= htmlspecialchars($page['page_id']) ?>">
+                    <a class="btn btn-warning kezeles"
+                        href="./page-articles.php?page=<?= htmlspecialchars($page['page_id']) ?>">
                         <i class="fa-solid fa-rectangle-list"></i>
                     </a>
-                    <a class="btn btn-primary kezeles" href="./edit-page.php?page=<?= htmlspecialchars($page['page_id']) ?>">
+                    <a class="btn btn-primary kezeles"
+                        href="./edit-page.php?page=<?= htmlspecialchars($page['page_id']) ?>">
                         <i class="fa-solid fa-edit"></i></a><a class="btn btn-danger kezeles"
                         href="./handlers/submit-delete-page.php?page=<?= htmlspecialchars($page['page_id']) ?>">
                         <i class="fa-solid fa-ban"></i>
                     </a>
+                </td>
+                <td>
+                    <?php if ($page['is_visible'] == 1) { ?>
+                    <a class="btn btn-danger kezeles"
+                        href="./handlers/submit-set-page-visibility.php?page=<?= htmlspecialchars($page['page_id']) ?>&visibility=0">
+                        <i class="fa-solid fa-ban"></i>
+                    </a>
+                    <?php } else { ?>
+                    <a class="btn btn-success kezeles"
+                        href="./handlers/submit-set-page-visibility.php?page=<?= htmlspecialchars($page['page_id']) ?>&visibility=1">
+                        <i class="fa-solid fa-check"></i>
+                    </a>
+                    <?php } ?>
                 </td>
             </tr>
 
@@ -94,7 +111,8 @@ include __DIR__ . "/admin-header.php";
     </table>
     <!-- Lapozás a következő oldalra -->
     <div class="lapoz">
-        <span class="px-3">Megjelenítve: <b>1-<?= htmlspecialchars($posts_number) ?></b>/<?= htmlspecialchars($posts_number) ?></span>
+        <span class="px-3">Megjelenítve: <b>1-<?= htmlspecialchars($posts_number) ?></b>/<?=
+                htmlspecialchars($posts_number) ?></span>
         <button class="btn btn-secondary">
             <i class="fa-solid fa-arrow-left"></i>
         </button>

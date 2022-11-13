@@ -46,6 +46,7 @@ include __DIR__ . "/admin-header.php";
                 <th>Legutóbbi módosítás</th>
                 <th>Szerző</th>
                 <th>Kezelés</th>
+                <th>Publikálás</th>
             </tr>
         </thead>
         <!-- Tartalmak megjelenítése -->
@@ -72,9 +73,9 @@ include __DIR__ . "/admin-header.php";
                 if ($article['is_visible'] == 1) {
                     echo "Publikus";
                 } else {
-                    echo "Piszkozat";
+                    echo "Rejtett";
                 }
-                ?>
+                    ?>
                 </td>
                 <td>
                     <?= htmlspecialchars($article['created_at']) ?>
@@ -95,6 +96,18 @@ include __DIR__ . "/admin-header.php";
                         <i class="fa-solid fa-ban"></i>
                     </a>
                 </td>
+                <td>
+                    <?php if ($article['is_visible'] == 1) { ?>
+                    <a class="btn btn-danger kezeles"
+                        href="./handlers/submit-set-article-visibility.php?article=<?= htmlspecialchars($article['article_id']) ?>&visibility=0">
+                        <i class="fa-solid fa-ban"></i>
+                    </a>
+                    <?php } else { ?>
+                    <a class="btn btn-success kezeles"
+                        href="./handlers/submit-set-article-visibility.php?article=<?= htmlspecialchars($article['article_id']) ?>&visibility=1">
+                        <i class="fa-solid fa-check"></i>
+                    </a>
+                    <?php } ?>
             </tr>
             <?php } ?>
 
@@ -102,7 +115,8 @@ include __DIR__ . "/admin-header.php";
     </table>
     <!-- Lapozás a következő oldalra -->
     <div class="lapoz">
-        <span class="px-3">Megjelenítve: <b>1-<?= htmlspecialchars($posts_number) ?></b>/<?= htmlspecialchars($posts_number) ?></span>
+        <span class="px-3">Megjelenítve: <b>1-<?= htmlspecialchars($posts_number) ?></b>/<?=
+                htmlspecialchars($posts_number) ?></span>
         <button class="btn btn-secondary">
             <i class="fa-solid fa-arrow-left"></i>
         </button>

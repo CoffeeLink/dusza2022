@@ -53,7 +53,7 @@ include __DIR__ . "/admin-header.php";
                         if ($article['is_visible'] == 1) {
                             echo "Publikus";
                         } else {
-                            echo "Piszkozat";
+                            echo "Rejtett";
                         }
                         ?></td>
                 <td><?= htmlspecialchars($article['created_at']) ?></td>
