@@ -30,7 +30,13 @@ if ($parent_page_id != null) {
     $parent_page_title = $parent_page['title'];
 
     $pdo = null;
+} else {
+    $pdo = connect_mysql();
+    $stmt = $pdo->prepare("SELECT * FROM pages");
+    $stmt->execute();
+    $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
 $page_title = "Új oldal";
 include __DIR__ . "/header.php";
 ?>
@@ -52,15 +58,17 @@ include __DIR__ . "/header.php";
             <input type="text" name="page_id" value="<?php echo htmlspecialchars($page_id); ?>" hidden>
             <div class="mb-3 row">
                 <label for="parent" class="col-12 col-sm-3 col-form-label">Szülő oldal:</label>
+                <?php if ($pages) { ?>
                 <div class="col-12 col-sm-9">
                     <select class="form-select" id="parent" aria-label="Default select example">
                         <option value="0" selected>Nincs szülő elem</option>
-                        <option value="1">1. ID-jű oldal</option>
-                        <option value="2">2. ID-jű</option>
-                        <option value="3">3. ID-jű</option>
+                        <?php foreach ($pages as $page) : ?>
+                            <option value="<?= $page['page_id']; ?>"><?= $page['title']; ?></option>
+                        <?php endforeach; ?>
                     </select>
 
                 </div>
+                <?php } ?>
             </div>
             <div class="mb-3 row">
                 <label for="title" class="col-12 col-sm-3 col-form-label">Cím:</label>
