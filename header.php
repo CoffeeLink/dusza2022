@@ -36,7 +36,7 @@
             <!-- Navigációs sor hivatkozásai -->
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Főoldal</a>
+                    <a href="./" class="nav-link">Főoldal</a>
                 </li>
                 <li class="nav-item"><a href="#" class="nav-link">Oldal1</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Oldal2</a></li>
