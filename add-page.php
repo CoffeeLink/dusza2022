@@ -57,14 +57,18 @@ include __DIR__ . "/header.php";
 
       <input type="text" name="page_id" value="<?= htmlspecialchars($page_id); ?>" hidden>
       <div class="mb-3 row">
+        <?php if ($parent_page_id != null) { ?>
+          <input type="text" name="parent_page_id" value="<?= htmlspecialchars($parent_page_id); ?>" hidden>
+        <?php } else { ?>
         <label for="parent" class="col-12 col-sm-3 col-form-label">Szülő oldal:</label>
         <div class="col-12 col-sm-9">
           <select class="form-select" id="parent" aria-label="Default select example">
             <option value="0" selected>Nincs szülő elem</option>
-            <option value="1">1. ID-jű oldal</option>
-            <option value="2">2. ID-jű</option>
-            <option value="3">3. ID-jű</option>
+            <?php foreach ($pages as $page) { ?>
+              <option value="<?= htmlspecialchars($page['page_id']); ?>"><?= htmlspecialchars($page['title']); ?></option>
+            <?php } ?>
           </select>
+        <?php } ?>
         </div>
       </div>
       <div class="mb-3 row">
