@@ -1,7 +1,7 @@
 <?php
 // Start the session.
 if (!isset($_SESSION)) {
-  session_start();
+    session_start();
 }
 
 $token = $_SESSION['jwt_token'] ?? null;

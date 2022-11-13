@@ -2,10 +2,29 @@
 include __DIR__ . "/lib/utils.php";
 include __DIR__ . "/modules/admin-header.php";
 
-$sql = "SELECT * FROM users WHERE user_id = ?";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$user_id]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
+if (!isset($_SESSION)){
+    session_start();
+}
+
+$token = $_SESSION['jwt_token'] ?? null;
+if (!checkPermission($token, 'WEBMASTER')) {
+    header("Location: $base_url/something-went-wrong.php?code=403");
+    return;
+}
+
+if (isset($_GET['user'])) {
+    $user_id = $_GET['user'];
+    $pdo = connect_mysql();
+    $sql = "SELECT * FROM users WHERE user_id = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$user_id]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+} else {
+    header("Location: $base_url/something-went-wrong.php?code=404");
+    return;
+}
+
+
 $page_title = "Felhasználó szerkesztése";
 ?>
 
@@ -19,7 +38,8 @@ $page_title = "Felhasználó szerkesztése";
             <a class="btn btn-secondary hozzaadas" href="./page-users.php">Vissza</a>
         </div>
     </div>
-    <form action="./handlers/register.php" method="POST">
+    <form action="./handlers/submit-edit-user.php" method="POST">
+        <input type="text" name="user_id" id="user_id" value="<?= $user_id ?>" hidden>
         <div class="container">
             <div class="mb-3 row">
                 <label for="username" class="col-sm-3 col-form-label">Felhasználónév:</label>
