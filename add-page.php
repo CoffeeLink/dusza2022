@@ -35,6 +35,7 @@ if ($parent_page_id != null) {
     $stmt = $pdo->prepare("SELECT * FROM pages");
     $stmt->execute();
     $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $pdo = null;
 }
 
 $page_title = "Új oldal";
