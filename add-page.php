@@ -63,7 +63,7 @@ include __DIR__ . "/modules/header.php";
         <?php } else { ?>
         <label for="parent" class="col-12 col-sm-3 col-form-label">Szülő oldal:</label>
         <div class="col-12 col-sm-9">
-          <select class="form-select" id="parent" name="parent_page_id" aria-label="Default select example">
+          <select class="form-select" id="parent" name="parent_page_id" aria-label="Default select example" required>
             <option value="0" selected>Nincs szülő elem</option>
             <?php foreach ($pages as $page) { ?>
               <option value="<?= htmlspecialchars($page['page_id']); ?>"><?= htmlspecialchars($page['title']); ?></option>
