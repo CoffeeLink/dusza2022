@@ -52,7 +52,7 @@ $page_title = "Felhasználó szerkesztése";
                 <label for="inputPassword" class="col-sm-3 col-form-label">Új jelszó:</label>
                 <div class="col-sm-9">
                     <input type="password" class="form-control" id="inputPassword" name="password"
-                        placeholder="••••••••" required>
+                        placeholder="••••••••" >
                 </div>
             </div>
             <div class="mb-3 row">
