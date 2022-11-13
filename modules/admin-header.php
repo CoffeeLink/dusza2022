@@ -10,7 +10,7 @@ if (!isset($_SESSION)) {
 $token = $_SESSION['jwt_token'] ?? null;
 
 if (!checkPermission($token, 'MODERATOR')) {
-    header("Location: $base_url/somsthing-went-wrong.php?code=403");
+    header("Location: $base_url/something-went-wrong.php?code=403");
 
     return;
 }
@@ -69,7 +69,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             </a>
             <ul class="dropdown-menu text-small shadow">
                 <li>
-                    <a class="dropdown-item" href="#">Saját oldalak megtekintése</a>
+                    <!-- <a class="dropdown-item" href="#">Saját oldalak megtekintése</a> -->
                     <a class="dropdown-item" href="./profile.php">Saját profil szerkesztése</a>
                 </li>
                 <li>

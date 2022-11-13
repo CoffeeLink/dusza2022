@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../lib/utils.php";
 // Start the session.
 if (!isset($_SESSION)) {
     session_start();

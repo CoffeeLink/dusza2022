@@ -8,7 +8,7 @@ session_start(); // Start the session.
 $token = $_SESSION['jwt_token'] ?? null;
 
 if(!checkPermission($token, 'WEBMASTER')) {
-    header("Location: $base_url/somsthing-went-wrong.php?code=403");
+    header("Location: $base_url/something-went-wrong.php?code=403");
 
     return;
 }

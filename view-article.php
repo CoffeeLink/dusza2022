@@ -62,7 +62,7 @@ include __DIR__ . "/modules/header.php";
 </head>
 
 <body>
-  <p>Route:
+  <p>Elérési útvonal:
     <?php
     foreach ($route as $page) {
       echo "<a href='./view-page.php?page=" . htmlspecialchars($page['page_id']) . "'>" . htmlspecialchars($page['title']) . "</a> -> ";
