@@ -15,11 +15,22 @@ if(!checkPermission($token, 'MODERATOR')) {
 $user_id = getUserId($token);
 
 $parent_page_id = $_POST['parent_page_id'] ?? null;
+if ($parent_page_id == "root") {
+  $parent_page_id = null;
+}
 $title = $_POST['title'];
 $description = $_POST['description'];
 $content = $_POST['content'];
 $img_url = $_POST['img_url'];
 $banner_img_url = $_POST['banner_img_url'];
+
+// echo all
+echo $parent_page_id;
+echo $title;
+echo $description;
+echo $content;
+echo $img_url;
+echo $banner_img_url;
 
 $pdo = connect_mysql();
 $sql = "INSERT INTO pages (parent_page_id, title, description, content, is_visible, created_at, edited_at, created_by_user_id, edited_by_user_id, img_url, banner_img_url) VALUES (?, ?, ?, ?, 0, NOW(), NOW(), ?, ?, ?, ?)";
