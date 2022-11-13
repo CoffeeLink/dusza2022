@@ -20,15 +20,12 @@ $settings = json_decode(file_get_contents(__DIR__ . "/../settings/settings.json"
                     <a href="./" class="nav-link px-3">Főoldal</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-3">Oldal1</a>
+                    <a href="./introduction.php" class="nav-link px-3">Bemutatkozás</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-3">Oldal2</a>
-                </li>
-                <li class="nav-item">
-                    <?php if (isset($_SESSION['jwt_token'])): ?>
+                    <?php if (isset($_SESSION['jwt_token'])) : ?>
                     <a href="./handlers/logout.php" class="nav-link px-3">Kijelentkezés</a>
-                    <?php else: ?>
+                    <?php else : ?>
                     <a href="./login.php" class="nav-link px-3">Bejelentkezés</a>
                     <?php endif; ?>
                 </li>

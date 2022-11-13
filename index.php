@@ -2,10 +2,14 @@
 require __DIR__ . "/lib/utils.php";
 $base_url = (require __DIR__ . "/config/config.php")['base_url'];
 
+session_start(); // Start the session.
+
+$token = $_SESSION['jwt_token'] ?? null;
+
 $pdo = connect_mysql();
 
 // Get all root pages
-$sql = "SELECT * FROM pages WHERE parent_page_id IS NULL";
+$sql = "SELECT * FROM pages WHERE parent_page_id IS NULL AND is_visible=1 ORDER BY created_at DESC";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -30,19 +34,25 @@ foreach ($pages as $page) {
   $time = $page['created_at'];
 ?>
 <div class="row">
-    <a class="text-decoration-none text-dark hover-white mb-2"
-        href="./view-page.php?page=<?php echo htmlspecialchars($page_id) ?>">
-        <h3 class=" pt-3"><?= htmlspecialchars($title) ?></h3>
-        <div class="row">
-            <div class="col-10">
-                <p class="fs-5"><?= htmlspecialchars($description) ?></p>
-            </div>
-            <div class="col-2">
-                <p class="jobbra-szoveg"><i><?= htmlspecialchars($time) ?></i></p>
-            </div>
-        </div>
-    </a>
-    <hr>
+  <a class="text-decoration-none text-dark hover-white mb-2"
+    href="./view-page.php?page=<?php echo htmlspecialchars($page_id) ?>">
+    <h3 class=" pt-3">
+      <?= htmlspecialchars($title) ?>
+    </h3>
+    <div class="row">
+      <div class="col-10">
+        <p class="fs-5">
+          <?= htmlspecialchars($description) ?>
+        </p>
+      </div>
+      <div class="col-2">
+        <p class="jobbra-szoveg"><i>
+            <?= htmlspecialchars($time) ?>
+          </i></p>
+      </div>
+    </div>
+  </a>
+  <hr>
 </div>
 
 
@@ -51,7 +61,13 @@ foreach ($pages as $page) {
 ?>
 
 <!-- Oldal hozzáadása gomb -->
+<?php
+if (checkPermission($token, 'MODERATOR')):
+?>
 <a class="btn btn-success" href="./add-page.php">Oldal hozzáadása</a>
+<?php
+endif;
+?>
 
 </a>
 <?php

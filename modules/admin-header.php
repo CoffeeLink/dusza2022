@@ -50,7 +50,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     <header class="d-flex flex-wrap justify-content-center py-1 border-bottom">
         <!-- Weboldal főcímének megjelenítése -->
         <div class="d-flex align-items-center mb-md-0 me-md-auto">
-            <span class="fs-4"><a href="#" class="text-dark text-decoration-none"><i
+            <span class="fs-4"><a href="./" class="text-dark text-decoration-none"><i
                         class="fa-solid fa-house px-3"></i></a><a href="#"
                     class="text-dark text-decoration-none">Vezérlőpult</a></span>
         </div>
@@ -89,7 +89,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             </a>
             <hr />
             <ul class="nav nav-pills flex-column mb-auto oldalsav">
-                <?php if(checkPermission($token, "MODERATOR")) { ?>
+                <?php if (checkPermission($token, "MODERATOR")) { ?>
                 <li class="nav-item">
                     <a href="./dashboard.php" class="nav-link link-dark" aria-current="page" id="vezerlopult">
                         <i class="fa-solid fa-gauge-high icon"></i> Vezérlőpult
@@ -104,7 +104,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                     </a>
                 </li>
                 <hr />
-                <?php if(checkPermission($token, "WEBMASTER")) { ?>
+                <?php if (checkPermission($token, "WEBMASTER")) { ?>
                 <li>
                     <a href="./edit-site.php" class="nav-link link-dark" id="portal_kezeles">
                         <i class="fa-solid fa-gears icon"></i>
@@ -125,7 +125,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 </li>
                 <hr />
                 <?php } ?>
-                <?php if(checkPermission($token, "MODERATOR")) { ?>
+                <?php if (checkPermission($token, "MODERATOR")) { ?>
                 <li>
                     <a href="./page-pages.php" class="nav-link link-dark" id="oldalak">
                         <i class="fa-solid fa-file-lines icon"></i>

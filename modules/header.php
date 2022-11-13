@@ -1,7 +1,7 @@
 <?php
 // Start the session.
 if (!isset($_SESSION)) {
-  session_start();
+    session_start();
 }
 
 $settings = json_decode(file_get_contents(__DIR__ . "/../settings/settings.json"), true);
@@ -50,10 +50,11 @@ $settings = json_decode(file_get_contents(__DIR__ . "/../settings/settings.json"
                     <a href="./" class="nav-link">Főoldal</a>
                 </li>
                 <li class="nav-item"><a href="./dashboard.php" class="nav-link">Vezérlőpult</a></li>
+                <li class="nav-item"><a href="./introduction.php" class="nav-link">Bemutatkozás</a></li>
                 <li class="nav-item">
-                    <?php if (isset($_SESSION['jwt_token'])): ?>
+                    <?php if (isset($_SESSION['jwt_token'])) : ?>
                     <a href="./handlers/logout.php" class="nav-link">Kijelentkezés</a>
-                    <?php else: ?>
+                    <?php else : ?>
                     <a href="./login.php" class="nav-link">Bejelentkezés</a>
                     <?php endif; ?>
                 </li>
