@@ -51,9 +51,9 @@ include "./admin_header.php";
                 <td><?= $user['permission'] ?></td>
                 <td><?= $user['registered_at'] ?></td>
                 <td>
-                    <a class="btn btn-primary kezeles" href="./edit-page.php?page=<?= $user['page_id'] ?>">
+                    <a class="btn btn-primary kezeles" href="./edit-page.php?page=<?= $user['user_id'] ?>">
                         <i class="fa-solid fa-edit"></i></a><a class="btn btn-danger kezeles"
-                        href="./handlers/submit-delete-page.php?page=<?= $user['page_id'] ?>">
+                        href="./handlers/submit-delete-page.php?page=<?= $user['user_id'] ?>">
                         <i class="fa-solid fa-ban"></i>
                     </a>
                 </td>
