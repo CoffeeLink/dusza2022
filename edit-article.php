@@ -15,7 +15,7 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$article_id]);
 $article = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if(!checkPermission($token, 'MODERATOR') && getUserId($_SESSION['jwt_token']) != $article['author_user_id']) {
+if (!checkPermission($token, 'MODERATOR') && getUserId($_SESSION['jwt_token']) != $article['author_user_id']) {
   header("Location: $base_url/");
 
   return;
@@ -29,24 +29,54 @@ $page_id = $article['page_id'];
 $title = $article['title'];
 $description = $article['description'];
 $content = $article['content'];
+$page_title = "Szerkesztés";
+
 
 $pdo = null;
+include __DIR__ . "/header.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
 <body>
-  <form action="./handlers/submit-edit-article.php" method="POST">
-    <input type="hidden" name="article_id" value="<?php echo htmlspecialchars($article_id); ?>">
-    <input type="text" name="title" value="<?php echo htmlspecialchars($title); ?>">
-    <input type="text" name="description" value="<?php echo htmlspecialchars($description); ?>">
-    <textarea name="content" id="" cols="30" rows="10"><?php echo htmlspecialchars($content); ?></textarea>
-    <input type="submit" value="Save">
-</body>
-</html>
+    <div class="row">
+        <div class="col-xl-2 col-lg-1 col-sm-0"></div>
+        <div class="col-xl-8 col-lg-10 col-sm-12 border border-info rounded bg-info bg-opacity-10 px-4">
+            <form action="./handlers/submit-edit-article.php" method="POST">
+                <h1>Szerkesztés: <?php echo htmlspecialchars($title); ?></h1>
+
+                <input type="hidden" name="article_id" value="<?php echo htmlspecialchars($article_id); ?>">
+                <div class="mb-3 row">
+                    <label for="title" class="col-12 col-sm-3 col-form-label">Cím:</label>
+                    <div class="col-12 col-sm-9">
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Cím"
+                            value="<?php echo htmlspecialchars($title); ?>">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="description" class="col-12 col-sm-3 col-form-label">Leírás:</label>
+                    <div class="col-12 col-sm-9">
+                        <input type="text" class="form-control" name="description" id="description"
+                            placeholder="••••••••" value="<?php echo htmlspecialchars($description); ?>" required>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="description" class="col-12 col-sm-3 col-form-label">Tartalom:</label>
+                    <div class="col-12 col-sm-9">
+
+                        <textarea class="form-control" name="content" id="content-editor" placeholder="Tartalom"
+                            id="floatingTextarea" rows="20"><?php echo htmlspecialchars($content); ?></textarea>
+                    </div>
+                    <input class="btn btn-success teljes my-4 py-2" type="submit" value="Mentés">
+                </div>
+
+
+
+
+            </form>
+
+        </div>
+        <div class="col-xl-2 col-lg-1 col-sm-0"></div>
+    </div>
+
+    <?php
+  include __DIR__ . "./footer.php";
+  ?>
