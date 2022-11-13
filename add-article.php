@@ -21,6 +21,7 @@ $sql = "SELECT * FROM pages WHERE page_id = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$page_id]);
 $page = $stmt->fetch(PDO::FETCH_ASSOC);
+$pdo = null;
 
 if (!$page) {
   header("Location: $base_url/");
