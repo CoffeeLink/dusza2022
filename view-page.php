@@ -182,9 +182,7 @@ if ($error == 'page-has-subpages') {
   <?php } ?>
   </ul>
   <?php
-  if (count($articles) == 0) {
-    echo "Nincs megjeleníthető tartalom";
-  } else {
+  if (count($children) != 0) {
   ?>
   <h3 class="py-3">Aloldalak:</h3>
   <ul class="list-group">
