@@ -18,12 +18,12 @@ if ($search){
 
     if ($pages) {
         foreach($pages as $page) {
-            echo "<a href='$base_url/page.php?page=$page[page_id]'>$page[title]</a><br>";
+            echo "<a href='$base_url/view-page.php?page=$page[page_id]'>$page[title]</a><br>";
         }
     }
     if ($articles) {
         foreach($articles as $article) {
-            echo "<a href='$base_url/article.php?article=$article[article_id]'>$article[title]</a><br>";
+            echo "<a href='$base_url/view-article.php?article=$article[article_id]'>$article[title]</a><br>";
         }
     }
 
