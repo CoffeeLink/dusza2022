@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . "/lib/utils.php";
-$base_url = (require __DIR__ . "/config/config.php")['base_url'];
-$settings = json_decode(file_get_contents(__DIR__ . "/settings/settings.json"), true);
+require_once __DIR__ . "/../lib/utils.php";
+$base_url = (require __DIR__ . "/../config/config.php")['base_url'];
+$settings = json_decode(file_get_contents(__DIR__ . "/../settings/settings.json"), true);
 
 if (!isset($_SESSION)) {
     session_start();
@@ -37,7 +37,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="./css/admin.css" />
     <title>Vezérlőpult</title>
 
-    <?php include __DIR__ . "/head.php" ?>
+    <?php include __DIR__ . "/global-head.php" ?>
 </head>
 
 <body>

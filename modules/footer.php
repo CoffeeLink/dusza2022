@@ -12,6 +12,12 @@
                     <a href="./" class="nav-link px-3">Főoldal</a>
                 </li>
                 <li class="nav-item">
+                    <a href="#" class="nav-link px-3">Oldal1</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link px-3">Oldal2</a>
+                </li>
+                <li class="nav-item">
                     <a href="./login.php" class="nav-link px-3">Bejelentkezés</a>
                 </li>
             </ul>

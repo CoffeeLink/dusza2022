@@ -6,7 +6,7 @@ $errorDescription = $_GET['errorDescription'] ?? 'Hiba történt';
 $errorCode = $_GET['errorCode'] ?? 'ISMERETLEN';
 $page_title = $errorTitle;
 
-include __DIR__ . "/header.php";
+include __DIR__ . "/modules/header.php";
 ?>
 <div class="row py-5 error_kulso">
     <div class="col-sm-12 col-md-6 px-2">
