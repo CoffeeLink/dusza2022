@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . "/lib/utils.php";
 $base_url = (require __DIR__ . "/config/config.php")['base_url'];
+$settings = json_decode(file_get_contents(__DIR__ . "/settings/settings.json"), true);
 
 session_start(); // Start the session.
 
@@ -21,8 +22,7 @@ include __DIR__ . "/modules/header.php";
 <html lang="en">
 
 <!-- Általános információk -->
-<h1>Weboldal neve</h1>
-<h3 class="description pb-3">Bemutatkozó szöveg</h3>
+<h1><?= $settings["name"] ?></h1>
 
 <!-- Oldalak kilistázása -->
 <h4>Oldalaink:</h4>
