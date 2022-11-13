@@ -22,7 +22,7 @@ $img_url = $_POST['img_url'];
 
 $pdo = connect_mysql();
 
-$sql = "INSERT INTO articles (page_id, title, description, content, author_user_id, is_visible, created_at, edited_at, edited_by_user_id, img_url) VALUES (?, ?, ?, ?, ?, 0, NOW(), NOW(), ?, ?)";
+$sql = "INSERT INTO articles (page_id, title, description, content, author_user_id, is_visible, created_at, edited_at, edited_by_user_id, img_url) VALUES (?, ?, ?, ?, ?, 0, default, default, ?, ?)";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$page_id, $title, $description, $content, $user_id, $user_id, $img_url]);
 

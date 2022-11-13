@@ -88,7 +88,7 @@ include __DIR__ . "/modules/header.php";
 
               // Display the route
               // Select the current page if it is the parent page
-              echo "<option value='" . $page['page_id'] . "' " . ($page['page_id'] == $_GET['page'] ? "selected" : "") . ">" . $route . "</option>";
+              echo "<option value='" . $page['page_id'] . "' " . ($page['parent_page'] == $_GET['page'] ? "selected" : "") . ">" . $route . "</option>";
             }
             ?>
             </select>

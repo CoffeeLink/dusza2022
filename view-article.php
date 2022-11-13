@@ -28,25 +28,27 @@ if (!$article['is_visible'] && !checkPermission($token ?? null, 'MODERATOR')) {
   return;
 }
 
-// Get the full route
+// Get the full route to the article through pages
+// Also save the page_id's in an array
 $route = [];
-$page_id = $article['page_id'];
-while ($page_id != null) {
+while ($article['page_id'] != null) {
   $sql = "SELECT * FROM pages WHERE page_id = ?";
   $stmt = $pdo->prepare($sql);
-  $stmt->execute([$article_id]);
+  $stmt->execute([$article['page_id']]);
   $page = $stmt->fetch(PDO::FETCH_ASSOC);
   array_push($route, [
     'page_id' => $page['page_id'],
     'title' => $page['title']
   ]);
-  $article_id = $page['parent_page_id'];
+  $article['page_id'] = $page['parent_page_id'];
 }
+
+$pdo = null;
 
 // Reverse the array so the route is in the correct order
 $route = array_reverse($route);
 
-$pdo = null;
+include __DIR__ . "/modules/header.php";
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +71,7 @@ $pdo = null;
     ?>
   </h1>
   <h1>
-    <?php echo htmlspecialchars($article['page_id']) ?>
+    <?php echo htmlspecialchars($article['title']); ?>
   </h1>
   <p>
     <?php echo htmlspecialchars($article['description']) ?>
@@ -87,6 +89,10 @@ $pdo = null;
     article</a>
   <?php
   }
+  ?>
+
+  <?php
+  include __DIR__ . "/modules/footer.php";
   ?>
 </body>
 
