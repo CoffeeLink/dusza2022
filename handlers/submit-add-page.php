@@ -26,7 +26,7 @@ $banner_img_url = $_POST['banner_img_url'];
 
 $pdo = connect_mysql();
 
-$sql = "INSERT INTO pages (parent_page_id, title, description, content, is_visible, created_at, edited_at, created_by_user_id, edited_by_user_id, img_url, banner_img_url) VALUES (?, ?, ?, ?, 0, NOW(), NOW(), ?, ?, ?, ?)";
+$sql = "INSERT INTO pages (parent_page_id, title, description, content, is_visible, created_at, edited_at, created_by_user_id, edited_by_user_id, img_url, banner_img_url) VALUES (?, ?, ?, ?, 0, default, default, ?, ?, ?, ?)";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$parent_page_id, $title, $description, $content, $user_id, $user_id, $img_url, $banner_img_url]);
 
