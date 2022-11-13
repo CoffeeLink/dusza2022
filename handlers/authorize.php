@@ -3,7 +3,7 @@
 session_start(); // Start the session.
 
 use Firebase\JWT\JWT;
-require __DIR__ . "/../lib/connection.php";
+require __DIR__ . "/../lib/utils.php";
 require_once(__DIR__ . '/../vendor/autoload.php');
 $config = require(__DIR__ . '/../config/config.php');
 $base_url = (require __DIR__ . "/../config/config.php")['base_url'];

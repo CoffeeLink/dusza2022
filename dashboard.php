@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . "./lib/connection.php";
+include __DIR__ . "/lib/utils.php";
 $pdo = connect_mysql();
 $sql = "SELECT * FROM articles ORDER BY edited_at DESC LIMIT 5";
 $stmt = $pdo->prepare($sql);
@@ -11,7 +11,7 @@ while ($article = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $posts_number++;
 }
 $aktiv_menu = "vezerlopult";
-include __DIR__ . "./admin_header.php";
+include __DIR__ . "/admin-header.php";
 ?>
 
 <!-- Tartalom -->
@@ -77,5 +77,5 @@ include __DIR__ . "./admin_header.php";
 
 </div>
 <?php
-include __DIR__ . "/admin_footer.php";
+include __DIR__ . "/admin-footer.php";
 ?>

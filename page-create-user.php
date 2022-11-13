@@ -1,7 +1,7 @@
 <?php
-include "./lib/connection.php";
+include __DIR__ . "/lib/utils.php";
 $aktiv_menu = "felhasznaloAdd";
-include "./admin_header.php";
+include __DIR__ . "/admin-header.php";
 ?>
 
 <!-- Tartalom -->
@@ -78,5 +78,5 @@ include "./admin_header.php";
     </form>
 </div>
 <?php
-include "./admin_footer.php";
+include __DIR__ . "/admin-footer.php";
 ?>

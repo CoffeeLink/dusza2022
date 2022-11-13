@@ -1,5 +1,5 @@
 <?php
-include __DIR__."./lib/connection.php";
+include __DIR__ . "/lib/utils.php";
 $pdo = connect_mysql();
 $sql = "SELECT * FROM pages ORDER BY created_at DESC";
 $stmt = $pdo->prepare($sql);
@@ -11,7 +11,7 @@ while ($page = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $posts_number++;
 }
 $aktiv_menu = "oldalak";
-include __DIR__."./admin_header.php";
+include __DIR__ . "/admin-header.php";
 ?>
 
 <!-- Tartalom -->
@@ -48,19 +48,31 @@ include __DIR__."./admin_header.php";
             ?>
 
             <tr>
-                <td class="id"><?= $page['page_id'] ?></td>
-                <td><?= $page['title'] ?></td>
-                <td><?php
-                        if ($page['is_visible'] == 1) {
-                            echo "Publikus";
-                        } else {
-                            echo "Piszkozat";
-                        }
-                        ?></td>
-                <td><?= $page['created_at'] ?></td>
-                <td><?= $createdUserName ?> ~
-                    <?= $page['edited_at'] ?></td>
-                <td><?= $editedUserName ?></td>
+                <td class="id">
+                    <?= $page['page_id'] ?>
+                </td>
+                <td>
+                    <?= $page['title'] ?>
+                </td>
+                <td>
+                    <?php
+                if ($page['is_visible'] == 1) {
+                    echo "Publikus";
+                } else {
+                    echo "Piszkozat";
+                }
+                ?>
+                </td>
+                <td>
+                    <?= $page['created_at'] ?>
+                </td>
+                <td>
+                    <?= $createdUserName ?> ~
+                        <?= $page['edited_at'] ?>
+                </td>
+                <td>
+                    <?= $editedUserName ?>
+                </td>
                 <td>
                     <a href="./view-page.php?page=<?= $page['page_id'] ?>" target="_blank" class="btn btn-success">
                         <i class="fa-solid fa-eye"></i>
@@ -92,5 +104,5 @@ include __DIR__."./admin_header.php";
     </div>
 </div>
 <?php
-include __DIR__."/admin_footer.php";
+include __DIR__ . "/admin-footer.php";
 ?>

@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . "/lib/connection.php";
+require __DIR__ . "/lib/utils.php";
 $base_url = (require __DIR__ . "/config/config.php")['base_url'];
 
 session_start(); // Start the session.
@@ -15,7 +15,7 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$article_id]);
 $article = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if(!checkPermission($_SESSION['jwt_token'], 'MODERATOR') && getUserId($_SESSION['jwt_token']) != $article['author_user_id']) {
+if(!checkPermission($token, 'MODERATOR') && getUserId($_SESSION['jwt_token']) != $article['author_user_id']) {
   header("Location: $base_url/");
 
   return;

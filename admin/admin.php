@@ -1,5 +1,5 @@
 <?php
-include "../lib/connection.php";
+include __DIR__ . "/../lib/utils.php";
 $pdo = connect_mysql();
 $sql = "SELECT * FROM articles";
 $stmt = $pdo->prepare($sql);

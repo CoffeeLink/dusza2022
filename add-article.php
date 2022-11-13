@@ -1,15 +1,15 @@
 <?php
-require __DIR__ . "/lib/connection.php";
+require __DIR__ . "/lib/utils.php";
 $base_url = (require __DIR__ . "/config/config.php")['base_url'];
 
 session_start(); // Start the session.
 
 $token = $_SESSION['jwt_token'] ?? null;
 
-if(!checkPermission($_SESSION['jwt_token'], 'EDITOR')) {
-    header("Location: $base_url/");
+if (!checkPermission($token, 'EDITOR')) {
+  header("Location: $base_url/");
 
-    return;
+  return;
 }
 
 $page_id = $_GET['page'];
@@ -45,8 +45,8 @@ $title = $page['title'];
 <body>
   <h1>Add article to
     <?php
-  echo $title;
-  ?>
+    echo $title;
+    ?>
   </h1>
   <form action="./handlers/submit-add-article.php" method="post">
     <input type="text" name="page_id" value="<?php echo $page_id; ?>" hidden>

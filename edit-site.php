@@ -1,5 +1,5 @@
 <?php
-include "./lib/connection.php";
+include __DIR__ . "/lib/utils.php";
 $pdo = connect_mysql();
 $sql = "SELECT * FROM users ORDER BY user_name ASC";
 $stmt = $pdo->prepare($sql);
@@ -11,7 +11,7 @@ while ($user = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $posts_number++;
 }
 $aktiv_menu = "portal_kezeles";
-include "./admin_header.php";
+include __DIR__ . "/admin-header.php";
 ?>
 
 <!-- Tartalom -->
@@ -55,5 +55,5 @@ include "./admin_header.php";
     </form>
 </div>
 <?php
-include "./admin_footer.php";
+include __DIR__ . "/admin-footer.php";
 ?>

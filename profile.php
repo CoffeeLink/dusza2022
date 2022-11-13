@@ -1,17 +1,18 @@
 <?php
-include "./lib/connection.php";
+include __DIR__ . "/lib/utils.php";
+session_start();
+
+$token = $_SESSION['jwt_token'] ?? null;
+
 $pdo = connect_mysql();
 $sql = "SELECT * FROM users WHERE user_id = ?";
 $stmt = $pdo->prepare($sql);
-$stmt->execute();
-$users = [];
-$posts_number = 0;
-while ($user = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $users[] = $user;
-    $posts_number++;
-}
+$stmt->execute([getUserId($token)]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+$pdo = null;
+
 $aktiv_menu = "profilom";
-include "./admin_header.php";
+include __DIR__ . "/admin-header.php";
 ?>
 
 <!-- Tartalom -->
@@ -30,7 +31,7 @@ include "./admin_header.php";
                 <label for="user_name" class="col-sm-3 col-form-label">Felhasználónév:</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="user_name" name="user_name" placeholder="john_doe"
-                        value="Név" required>
+                        value="<?php echo $user["user_name"] ?>" required>
                 </div>
             </div>
             <div class="mb-3 row">
@@ -44,29 +45,25 @@ include "./admin_header.php";
                 <label for="email" class="col-sm-3 col-form-label">Email-cím:</label>
                 <div class="col-sm-9">
                     <input type="email" class="form-control" id="email" name="email" placeholder="email@example.com"
-                        required>
+                        value="<?php echo $user["email"] ?>" required>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="lastname" class="col-sm-3 col-form-label">Vezetéknév:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="lastname" name="last_name" placeholder="Doe" required>
+                    <input type="text" class="form-control" id="lastname" name="last_name" placeholder="Doe" value="<?php echo $user["last_name"] ?>" required>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="first_name" class="col-sm-3 col-form-label">Keresztnév:</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="first_name" name="first_name" placeholder="John"
-                        required>
+                        value="<?php echo $user["first_name"] ?>" required>
                 </div>
             </div>
-            <div class="mb-3 row">
-                <label for="birth_date" class="col-sm-3 col-form-label">Születési dátum:</label>
-                <div class="col-sm-9">
-                    <input type="date" class="form-control" id="birth_date" name="birth_date" max="2022-01-01">
-                </div>
-            </div>
-            <div class="mb-3 row">
+            <!-- I commented out this because user can't change his permission level -->
+            <!-- --Zoli-- -->
+            <!-- <div class="mb-3 row">
                 <label for="permission" class="col-sm-3 col-form-label">Jogosultsági szint:</label>
                 <div class="col-sm-9">
                     <select class="form-select" id="permission">
@@ -75,7 +72,7 @@ include "./admin_header.php";
                         <option value="WEBMASTER">Webmester</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
             <div class="mb-3 row">
                 <label for="profile_picture" class="col-sm-3 col-form-label">Profilkép</label>
                 <div class="col-sm-9">
@@ -88,5 +85,5 @@ include "./admin_header.php";
     </form>
 </div>
 <?php
-include "./admin_footer.php";
+include __DIR__ . "/admin-footer.php";
 ?>

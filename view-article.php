@@ -1,6 +1,6 @@
 <?php
-require_once 'vendor/autoload.php';
-require __DIR__ . "/lib/connection.php";
+require_once __DIR__ . '/vendor/autoload.php';
+require __DIR__ . "/lib/utils.php";
 $base_url = (require __DIR__ . "/config/config.php")['base_url'];
 use Michelf\Markdown;
 
@@ -59,7 +59,7 @@ $pdo = null;
       echo "<a href='./view-page.php?page={$page['page_id']}'>{$page['title']}</a> -> ";
     }
     echo $title;
-  ?>
+    ?>
   </h1>
   <h1>
     <?php echo $title ?>

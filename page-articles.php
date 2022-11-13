@@ -1,10 +1,10 @@
 <?php
-include __DIR__."/lib/connection.php";
+include __DIR__ . "/lib/utils.php";
 $pdo = connect_mysql();
 $sql = "SELECT * FROM articles";
 $page_id = 0;
 if (isset($_GET['page'])) {
-    $page_id = (int)$_GET['page'];
+    $page_id = (int) $_GET['page'];
     $sql .= " WHERE page_id = " . $page_id;
 }
 $stmt = $pdo->prepare($sql);
@@ -16,7 +16,7 @@ while ($article = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $posts_number++;
 }
 $aktiv_menu = "bejegyzesek";
-include __DIR__."/admin_header.php";
+include __DIR__ . "/admin-header.php";
 ?>
 
 <!-- Tartalom -->
@@ -58,19 +58,33 @@ include __DIR__."/admin_header.php";
             ?>
 
             <tr>
-                <td class="id"><?= $article['article_id'] ?></td>
-                <td class="id"><?= $article['page_id'] ?></td>
-                <td><?= $article['title'] ?></td>
-                <td><?php
-                        if ($article['is_visible'] == 1) {
-                            echo "Publikus";
-                        } else {
-                            echo "Piszkozat";
-                        }
-                        ?></td>
-                <td><?= $article['created_at'] ?></td>
-                <td><?= $editedBy ?> ~ <?= $article['edited_at'] ?></td>
-                <td><?= $createdBy ?></td>
+                <td class="id">
+                    <?= $article['article_id'] ?>
+                </td>
+                <td class="id">
+                    <?= $article['page_id'] ?>
+                </td>
+                <td>
+                    <?= $article['title'] ?>
+                </td>
+                <td>
+                    <?php
+                if ($article['is_visible'] == 1) {
+                    echo "Publikus";
+                } else {
+                    echo "Piszkozat";
+                }
+                ?>
+                </td>
+                <td>
+                    <?= $article['created_at'] ?>
+                </td>
+                <td>
+                    <?= $editedBy ?> ~ <?= $article['edited_at'] ?>
+                </td>
+                <td>
+                    <?= $createdBy ?>
+                </td>
                 <td>
                     <a href="./view-article.php?article=<?= $article['article_id'] ?>" target="_blank"
                         class="btn btn-success">
@@ -98,5 +112,5 @@ include __DIR__."/admin_header.php";
     </div>
 
     <?php
-    include __DIR__."./admin_footer.php";
+    include __DIR__ . "/admin-footer.php";
     ?>

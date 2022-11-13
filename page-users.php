@@ -1,5 +1,5 @@
 <?php
-include "./lib/connection.php";
+include __DIR__ . "/lib/utils.php";
 $pdo = connect_mysql();
 $sql = "SELECT * FROM users ORDER BY user_name ASC";
 $stmt = $pdo->prepare($sql);
@@ -11,7 +11,7 @@ while ($user = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $posts_number++;
 }
 $aktiv_menu = "felhasznalok";
-include "./admin_header.php";
+include __DIR__ . "/admin-header.php";
 ?>
 
 <!-- Tartalom -->
@@ -44,12 +44,24 @@ include "./admin_header.php";
             ?>
 
             <tr>
-                <td class="id"><?= $user['user_id'] ?></td>
-                <td><?= $user['user_name'] ?></td>
-                <td><?= $user['email'] ?></td>
-                <td><?= $user['last_name'] . ' ' . $user['first_name'] ?></td>
-                <td><?= $user['permission'] ?></td>
-                <td><?= $user['registered_at'] ?></td>
+                <td class="id">
+                    <?= $user['user_id'] ?>
+                </td>
+                <td>
+                    <?= $user['user_name'] ?>
+                </td>
+                <td>
+                    <?= $user['email'] ?>
+                </td>
+                <td>
+                    <?= $user['last_name'] . ' ' . $user['first_name'] ?>
+                </td>
+                <td>
+                    <?= $user['permission'] ?>
+                </td>
+                <td>
+                    <?= $user['registered_at'] ?>
+                </td>
                 <td>
                     <a class="btn btn-primary kezeles" href="./edit-page.php?page=<?= $user['user_id'] ?>">
                         <i class="fa-solid fa-edit"></i></a><a class="btn btn-danger kezeles"
@@ -75,5 +87,5 @@ include "./admin_header.php";
     </div>
 </div>
 <?php
-include "./admin_footer.php";
+include __DIR__ . "/admin-footer.php";
 ?>
