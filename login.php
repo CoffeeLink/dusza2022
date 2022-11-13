@@ -9,8 +9,8 @@ include __DIR__ . "/header.php";
 
 <body>
     <div class="row">
-        <div class="col-lg-3 col-md-2 col-sm-0"></div>
-        <div class="col-lg-6 col-md-8 col-sm-12 border border-info rounded bg-info bg-opacity-10 px-4">
+        <div class="col-xl-3 col-lg-2 col-sm-0"></div>
+        <div class="col-xl-6 col-lg-8 col-sm-12 border border-info rounded bg-info bg-opacity-10 px-4">
             <h1 class="text-center">Bejelentkezés</h1>
             <form action="./handlers/authorize.php" method="POST">
                 <div class="mb-3 row">
@@ -31,7 +31,7 @@ include __DIR__ . "/header.php";
             </form>
 
         </div>
-        <div class="col-lg-3 col-md-2 col-sm-0"></div>
+        <div class="col-xl-3 col-lg-2 col-sm-0"></div>
     </div>
     </div>
 
