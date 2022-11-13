@@ -32,7 +32,7 @@ if ($parent_page_id != null) {
   $pdo = null;
 }
 $page_title = "Új oldal";
-include __DIR__ . "/header.php";
+include __DIR__ . "/modules/header.php";
 ?>
 
 <div class="row">
@@ -103,5 +103,5 @@ include __DIR__ . "/header.php";
   <div class="col-xl-2 col-lg-1 col-sm-0"></div>
 </div>
 <?php
-include __DIR__ . "/footer.php";
+include __DIR__ . "/modules/footer.php";
 ?>

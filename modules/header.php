@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./css/page.css" />
     <title><?= $page_title ?></title>
 
-    <?php include __DIR__ . "/head.php" ?>
+    <?php include __DIR__ . "/global-head.php" ?>
 </head>
 
 <body>

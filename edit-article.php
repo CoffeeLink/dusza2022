@@ -28,7 +28,7 @@ if (!$article) {
 $page_title = "Szerkesztés";
 
 $pdo = null;
-include __DIR__ . "/header.php";
+include __DIR__ . "/modules/header.php";
 ?>
 <div class="row">
   <div class="col-xl-2 col-lg-1 col-sm-0"></div>
@@ -74,5 +74,5 @@ include __DIR__ . "/header.php";
 </div>
 
 <?php
-include __DIR__ . "./footer.php";
+include __DIR__ . "./modules/footer.php";
 ?>

@@ -16,7 +16,7 @@ while ($article = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $posts_number++;
 }
 $aktiv_menu = "bejegyzesek";
-include __DIR__ . "/admin-header.php";
+include __DIR__ . "/modules/admin-header.php";
 ?>
 
 <!-- Tartalom -->
@@ -126,5 +126,5 @@ include __DIR__ . "/admin-header.php";
     </div>
 
     <?php
-    include __DIR__ . "/admin-footer.php";
+    include __DIR__ . "/modules/admin-footer.php";
     ?>

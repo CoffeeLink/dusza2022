@@ -64,7 +64,7 @@ $db = null;
 
 
 
-include __DIR__ . "/header.php";
+include __DIR__ . "/modules/header.php";
 ?>
 
 
@@ -148,5 +148,5 @@ if ($error == 'page-has-subpages') {
 </div>
 
 <?php
-include __DIR__ . "/footer.php";
+include __DIR__ . "/modules/footer.php";
 ?>

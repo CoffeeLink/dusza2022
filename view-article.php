@@ -17,11 +17,6 @@ if (!$article) {
   header("Location: $base_url/something-went-wrong.php?errorTitle=Page%20not%20found&errorDescription=The%20page%20you%20are%20looking%20for%20does%20not%20exist.&errorCode=404");
 }
 
-$page_id = $article['page_id'];
-$title = $article['title'];
-$description = $article['description'];
-$content = $article['content'];
-
 // Get the full route
 $route = [];
 while ($page_id != null) {
@@ -58,17 +53,17 @@ $pdo = null;
     foreach ($route as $page) {
       echo "<a href='./view-page.php?page=" . htmlspecialchars($page['page_id']) . "'>" . htmlspecialchars($page['title']) . "</a> -> ";
     }
-    echo htmlspecialchars($title);
+    echo htmlspecialchars($article['title']);
     ?>
   </h1>
   <h1>
-    <?php echo htmlspecialchars($title) ?>
+    <?php echo htmlspecialchars($article['page_id']) ?>
   </h1>
   <p>
-    <?php echo htmlspecialchars($description) ?>
+    <?php echo htmlspecialchars($article['description']) ?>
   </p>
   <div>
-    <?php echo Markdown::defaultTransform($content) ?>
+    <?php echo Markdown::defaultTransform($article['content']) ?>
   </div>
   <a href="./edit-article.php?article=<?php echo htmlspecialchars($article['article_id']) ?>">Edit article</a>
   <a href="./handlers/submit-delete-article.php?article=<?php echo htmlspecialchars($article['article_id']) ?>">Delete article</a>

@@ -4,7 +4,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 $base_url = (require __DIR__ . "/config/config.php")['base_url'];
 $page_title = "Bejeletkezés";
 session_start();
-include __DIR__ . "/header.php";
+include __DIR__ . "/modules/header.php";
 ?>
 
 <body>
