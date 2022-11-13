@@ -181,6 +181,11 @@ if ($error == 'page-has-subpages') {
   </div>
   <?php } ?>
   </ul>
+  <?php
+  if (count($articles) == 0) {
+    echo "Nincs megjeleníthető tartalom";
+  } else {
+  ?>
   <h3 class="py-3">Aloldalak:</h3>
   <ul class="list-group">
     <?php
@@ -188,6 +193,10 @@ if ($error == 'page-has-subpages') {
       echo "<li class='list-group-item'><a class='text-decoration-none' href='./view-page.php?page=" . htmlspecialchars($child['page_id']) . "'><b>" . htmlspecialchars($child['title']) . "</b> - " . $child['description'] . "</a></li>";
     }
     ?>
+    <?php
+  }
+    ?>
+
 </div>
 
 <?php

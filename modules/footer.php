@@ -8,9 +8,9 @@ $settings = json_decode(file_get_contents(__DIR__ . "/../settings/settings.json"
 ?>
 </div>
 <!-- Lábléc -->
-<div class="kulso">
+<div class="kulso position-fixed fixed-bottom">
     <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 mb-0">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mb-0">
             <p class="col-md-4 mb-0">
                 <a href="./" class="nav-link"><span class="fs-4"><?= $settings['name'] ?></a>
             </p>

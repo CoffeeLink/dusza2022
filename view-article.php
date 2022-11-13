@@ -62,14 +62,14 @@ include __DIR__ . "/modules/header.php";
 </head>
 
 <body>
-  <h1>Route:
+  <p>Route:
     <?php
     foreach ($route as $page) {
       echo "<a href='./view-page.php?page=" . htmlspecialchars($page['page_id']) . "'>" . htmlspecialchars($page['title']) . "</a> -> ";
     }
     echo htmlspecialchars($article['title']);
     ?>
-  </h1>
+  </p>
   <h1>
     <?php echo htmlspecialchars($article['title']); ?>
   </h1>
