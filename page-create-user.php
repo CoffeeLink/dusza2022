@@ -1,7 +1,7 @@
 <?php
 include __DIR__ . "/lib/utils.php";
 $aktiv_menu = "felhasznaloAdd";
-include __DIR__ . "/admin-header.php";
+include __DIR__ . "/modules/admin-header.php";
 ?>
 
 <!-- Tartalom -->
