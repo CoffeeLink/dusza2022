@@ -124,7 +124,7 @@
 VALUES ("example@example.com", "d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1", "test_user", "firstname", "lastname", "2000-01-01", default, 'EDITOR', NULL);]]></string>
 		</script>
 		<script name="SQL_Editor_001" id="Editor-bba" language="SQL" >
-			<string><![CDATA[select * from articles;]]></string>
+			<string><![CDATA[select * from users;]]></string>
 		</script>
 		<script name="SQL_Editor_002" id="Editor-9ca" language="SQL" >
 			<string><![CDATA[INSERT INTO articles (title, description, content, author_user_id, is_visible, created_at, edited_at, edited_by_user_id)

@@ -18,6 +18,7 @@
 				<defo><![CDATA[curdate()]]></defo>
 			</column>
 			<column name="edited_by_user_id" type="INT" jt="4" mandatory="y" />
+			<column name="img_url" type="TEXT" jt="-1" />
 			<index name="pk_articles" unique="PRIMARY_KEY" >
 				<column name="article_id" />
 			</index>
@@ -60,6 +61,8 @@
 			</column>
 			<column name="created_by_user_id" type="INT" jt="4" mandatory="y" />
 			<column name="edited_by_user_id" type="INT" jt="4" mandatory="y" />
+			<column name="img_url" type="TEXT" jt="-1" />
+			<column name="banner_img_url" type="TEXT" jt="-1" />
 			<index name="pk_pages" unique="PRIMARY_KEY" >
 				<column name="page_id" />
 			</index>
@@ -92,7 +95,6 @@
 			<column name="user_name" type="VARCHAR" length="100" jt="12" mandatory="y" />
 			<column name="first_name" type="VARCHAR" length="100" jt="12" mandatory="y" />
 			<column name="last_name" type="VARCHAR" length="100" jt="12" mandatory="y" />
-			<column name="birth_date" type="DATE" jt="91" />
 			<column name="registered_at" type="DATE" jt="91" mandatory="y" >
 				<defo><![CDATA[curdate()]]></defo>
 			</column>
@@ -102,6 +104,12 @@
 			<column name="profile_image_url" type="TEXT" jt="-1" />
 			<index name="pk_users" unique="PRIMARY_KEY" >
 				<column name="user_id" />
+			</index>
+			<index name="unq_users" unique="UNIQUE_KEY" >
+				<column name="email" />
+			</index>
+			<index name="unq_users_0" unique="UNIQUE_KEY" >
+				<column name="user_name" />
 			</index>
 			<options><![CDATA[engine=InnoDB]]></options>
 		</table>
@@ -116,7 +124,7 @@
 VALUES ("example@example.com", "d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1", "test_user", "firstname", "lastname", "2000-01-01", default, 'EDITOR', NULL);]]></string>
 		</script>
 		<script name="SQL_Editor_001" id="Editor-bba" language="SQL" >
-			<string><![CDATA[select * from pages;]]></string>
+			<string><![CDATA[select * from articles;]]></string>
 		</script>
 		<script name="SQL_Editor_002" id="Editor-9ca" language="SQL" >
 			<string><![CDATA[INSERT INTO articles (title, description, content, author_user_id, is_visible, created_at, edited_at, edited_by_user_id)
