@@ -5,7 +5,7 @@ $base_url = (require __DIR__ . "/config/config.php")['base_url'];
 $pdo = connect_mysql();
 
 // Get all root pages
-$sql = "SELECT * FROM pages WHERE parent_page_id IS NULL";
+$sql = "SELECT * FROM pages WHERE parent_page_id IS NULL AND is_visible=1 ORDER BY created_at DESC";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
