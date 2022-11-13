@@ -16,8 +16,11 @@ include __DIR__ . "/modules/header.php";
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Általános információk -->
 <h1>Weboldal neve</h1>
 <h3 class="description pb-3">Bemutatkozó szöveg</h3>
+
+<!-- Oldalak kilistázása -->
 <h4>Oldalaink:</h4>
 <?php
 foreach ($pages as $page) {
@@ -46,7 +49,10 @@ foreach ($pages as $page) {
 <?php
 }
 ?>
+
+<!-- Oldal hozzáadása gomb -->
 <a class="btn btn-success" href="./add-page.php">Oldal hozzáadása</a>
+
 </a>
 <?php
 include __DIR__ . "/modules/footer.php";
