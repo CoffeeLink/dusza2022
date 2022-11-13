@@ -64,12 +64,12 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <ul class="dropdown-menu text-small shadow">
                 <li>
                     <a class="dropdown-item" href="#">Saját oldalak megtekintése</a>
-                    <a class="dropdown-item" href="#">Saját profil szerkesztése</a>
+                    <a class="dropdown-item" href="./profile.php">Saját profil szerkesztése</a>
                 </li>
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="#">Kijelentkezés</a></li>
+                <li><a class="dropdown-item" href="./handlers/logout.php">Kijelentkezés</a></li>
             </ul>
         </div>
     </header>
