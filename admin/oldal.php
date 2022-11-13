@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Bootstrap behívása -->
-    <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.min.css" />
-    <script src="/css/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css" />
+    <script src="../css/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Font Awesome behívása -->
     <script src="https://kit.fontawesome.com/df92ea1e57.js" crossorigin="anonymous"></script>
 
     <!-- Saját CSS behívása -->
-    <link rel="stylesheet" href="/css/page.css" />
+    <link rel="stylesheet" href="../css/page.css" />
     <title>Blogmotor</title>
 </head>
 
@@ -57,7 +57,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <!-- Indexkép -->
-                    <img class="img-fluid" src="/img/default_image.png" alt="Indexkép" />
+                    <img class="img-fluid" src="../img/default_image.png" alt="Indexkép" />
 
                     <!-- Bejegyzés megjelenő adatai -->
                     <h3>Bejegyzés 6</h3>
@@ -80,7 +80,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <!-- Indexkép -->
-                    <img class="img-fluid" src="/img/default_image.png" alt="Indexkép" />
+                    <img class="img-fluid" src="../img/default_image.png" alt="Indexkép" />
 
                     <!-- Bejegyzés megjelenő adatai -->
                     <h3>Bejegyzés 5</h3>
@@ -103,7 +103,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <!-- Indexkép -->
-                    <img class="img-fluid" src="/img/default_image.png" alt="Indexkép" />
+                    <img class="img-fluid" src="../img/default_image.png" alt="Indexkép" />
 
                     <!-- Bejegyzés megjelenő adatai -->
                     <h3>Bejegyzés 4</h3>
@@ -126,7 +126,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <!-- Indexkép -->
-                    <img class="img-fluid" src="/img/default_image.png" alt="Indexkép" />
+                    <img class="img-fluid" src="../img/default_image.png" alt="Indexkép" />
 
                     <!-- Bejegyzés megjelenő adatai -->
                     <h3>Bejegyzés 3</h3>
@@ -149,7 +149,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <!-- Indexkép -->
-                    <img class="img-fluid" src="/img/default_image.png" alt="Indexkép" />
+                    <img class="img-fluid" src="../img/default_image.png" alt="Indexkép" />
 
                     <!-- Bejegyzés megjelenő adatai -->
                     <h3>Bejegyzés 2</h3>
@@ -172,7 +172,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <!-- Indexkép -->
-                    <img class="img-fluid" src="/img/default_image.png" alt="Indexkép" />
+                    <img class="img-fluid" src="../img/default_image.png" alt="Indexkép" />
 
                     <!-- Bejegyzés megjelenő adatai -->
                     <h3>Bejegyzés 1</h3>
