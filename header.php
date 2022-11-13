@@ -18,6 +18,7 @@
 
     <!-- Saját CSS behívása -->
     <link rel="stylesheet" href="./css/page.css" />
+
     <title><?= $page_title ?></title>
 
     <?php include __DIR__ . "/head.php" ?>
