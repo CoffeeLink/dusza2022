@@ -37,7 +37,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="./css/admin.css" />
     <title>Vezérlőpult</title>
 
-    <?php include __DIR__ . "/head.php" ?>
+    <?php include __DIR__ . "/global-head.php" ?>
 </head>
 
 <body>

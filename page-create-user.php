@@ -72,5 +72,5 @@ include __DIR__ . "/admin-header.php";
     </form>
 </div>
 <?php
-include __DIR__ . "/admin-footer.php";
+include __DIR__ . "/modules/admin-footer.php";
 ?>

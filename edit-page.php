@@ -27,7 +27,7 @@ if (!$page) {
 }
 
 $pdo = null;
-include __DIR__ . "/header.php";
+include __DIR__ . "/modules/header.php";
 ?>
 
 <body>
@@ -82,5 +82,5 @@ include __DIR__ . "/header.php";
   </div>
 
   <?php
-  include __DIR__ . "./footer.php";
+  include __DIR__ . "./modules/footer.php";
   ?>

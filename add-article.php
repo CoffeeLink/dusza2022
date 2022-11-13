@@ -29,7 +29,7 @@ if (!$page) {
 
 $title = $page['title'];
 $page_title = "Létrehozás";
-include __DIR__ . "/header.php";
+include __DIR__ . "/modules/header.php";
 ?>
 
 <div class="row">
