@@ -12,6 +12,7 @@ $sql = "SELECT * FROM articles WHERE article_id = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$article]);
 $article = $stmt->fetch(PDO::FETCH_ASSOC);
+$article_id = $article['article_id'];
 
 if (!$article) {
   header("Location: $base_url/something-went-wrong.php?errorTitle=Page%20not%20found&errorDescription=The%20page%20you%20are%20looking%20for%20does%20not%20exist.&errorCode=404");
@@ -19,16 +20,16 @@ if (!$article) {
 
 // Get the full route
 $route = [];
-while ($page_id != null) {
+while ($article_id != null) {
   $sql = "SELECT * FROM pages WHERE page_id = ?";
   $stmt = $pdo->prepare($sql);
-  $stmt->execute([$page_id]);
+  $stmt->execute([$article_id]);
   $page = $stmt->fetch(PDO::FETCH_ASSOC);
   array_push($route, [
     'page_id' => $page['page_id'],
     'title' => $page['title']
   ]);
-  $page_id = $page['parent_page_id'];
+  $article_id = $page['parent_page_id'];
 }
 
 // Reverse the array so the route is in the correct order

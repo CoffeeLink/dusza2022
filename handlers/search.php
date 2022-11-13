@@ -1,5 +1,4 @@
 <?php
-
 require __DIR__ . "/../lib/utils.php";
 $config = require(__DIR__ . '/../config/config.php');
 $base_url = (require __DIR__ . "/../config/config.php")['base_url'];
