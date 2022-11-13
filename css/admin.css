@@ -12,6 +12,7 @@ input {
   padding: 20px;
 }
 
+/* Admin táblázatok kinézete */
 thead {
   background-color: #CADCF9;
 }
@@ -25,7 +26,6 @@ tr td {
   vertical-align: middle;
 }
 
-/* Táblázat  */
 tbody tr:nth-child(even) {
   background-color: #D9F0FF;
 }
