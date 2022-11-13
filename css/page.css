@@ -35,6 +35,10 @@ h1 {
   font-size: larger;
 }
 
+.focim {
+  padding-bottom: 75px;
+}
+
 /* Képek belső margójának beállítása */
 .img-fluid {
   padding-bottom: 20px;
@@ -61,6 +65,9 @@ h1 {
   padding-left: 20px;
 }
 
+.tartalom {
+  font-size: 120%;
+}
 
 /* Tovább olvasom gomb beállítása */
 .tovabb-olvasom {
