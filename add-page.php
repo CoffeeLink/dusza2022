@@ -7,29 +7,29 @@ session_start(); // Start the session.
 $token = $_SESSION['jwt_token'] ?? null;
 
 if (!checkPermission($token, 'MODERATOR')) {
-  header("Location: https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    header("Location: $base_url/");
 
-  return;
+    return;
 }
 
 // Might be null if the page is the root page
 $parent_page_id = $_GET['parent_page'] ?? null;
 
 if ($parent_page_id != null) {
-  $pdo = connect_mysql();
+    $pdo = connect_mysql();
 
-  $sql = "SELECT * FROM pages WHERE page_id = ?";
-  $stmt = $pdo->prepare($sql);
-  $stmt->execute([$parent_page_id]);
-  $parent_page = $stmt->fetch(PDO::FETCH_ASSOC);
+    $sql = "SELECT * FROM pages WHERE page_id = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$parent_page_id]);
+    $parent_page = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  if (!$parent_page) {
-    header("Location: $base_url/");
-  }
+    if (!$parent_page) {
+        header("Location: $base_url/");
+    }
 
-  $parent_page_title = $parent_page['title'];
+    $parent_page_title = $parent_page['title'];
 
-  $pdo = null;
+    $pdo = null;
 }
 $page_title = "Új oldal";
 include __DIR__ . "/header.php";
@@ -41,8 +41,8 @@ include __DIR__ . "/header.php";
         <form action="./handlers/submit-add-page.php" method="POST">
             <h1>
                 <?php
-        if ($parent_page_id != null) {
-          echo "Oldal hozzáadása ehhez: <?= htmlspecialchars($parent_page_title); ?>";
+                if ($parent_page_id != null) {
+                    echo "Oldal hozzáadása ehhez: <?= htmlspecialchars($title); ?>";
                 } else {
                 echo "Oldal hozzáadása";
                 }
@@ -50,6 +50,18 @@ include __DIR__ . "/header.php";
             </h1>
 
             <input type="text" name="page_id" value="<?php echo htmlspecialchars($page_id); ?>" hidden>
+            <div class="mb-3 row">
+                <label for="parent" class="col-12 col-sm-3 col-form-label">Szülő oldal:</label>
+                <div class="col-12 col-sm-9">
+                    <select class="form-select" id="parent" aria-label="Default select example">
+                        <option value="0" selected>Nincs szülő elem</option>
+                        <option value="1">1. ID-jű oldal</option>
+                        <option value="2">2. ID-jű</option>
+                        <option value="3">3. ID-jű</option>
+                    </select>
+
+                </div>
+            </div>
             <div class="mb-3 row">
                 <label for="title" class="col-12 col-sm-3 col-form-label">Cím:</label>
                 <div class="col-12 col-sm-9">
@@ -73,11 +85,11 @@ include __DIR__ . "/header.php";
                 <input class="btn btn-success teljes my-4 py-2" type="submit" value="Mentés">
             </div>
 
-
-
-
         </form>
 
     </div>
     <div class="col-xl-2 col-lg-1 col-sm-0"></div>
 </div>
+<?php
+include __DIR__ . "/footer.php";
+?>
