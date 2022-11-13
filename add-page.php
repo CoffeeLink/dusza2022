@@ -6,10 +6,10 @@ session_start(); // Start the session.
 
 $token = $_SESSION['jwt_token'] ?? null;
 
-if(!checkPermission($token, 'MODERATOR')) {
-    header("Location: $base_url/");
+if (!checkPermission($token, 'MODERATOR')) {
+  header("Location: $base_url/");
 
-    return;
+  return;
 }
 
 // Might be null if the page is the root page
@@ -40,7 +40,7 @@ if ($parent_page_id != null) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+  <link rel=" stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
   <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
   <script defer src="./js/editor.js"></script>
   <title>Add page</title>
