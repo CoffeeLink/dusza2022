@@ -32,7 +32,8 @@ include __DIR__ . "/modules/admin-header.php";
             <a class="btn btn-secondary hozzaadas" href="./page-users.php">Vissza</a>
         </div>
     </div>
-    <form action="./handlers/register.php" method="POST">
+    <form action="./handlers/submit-edit-user.php" method="POST">
+        <input type="text" name="user_id" id="user_id" value="<?= $user["user_id"]?>" hidden>
         <div class="container">
             <div class="mb-3 row">
                 <label for="username" class="col-sm-3 col-form-label">Felhasználónév:</label>
@@ -45,7 +46,7 @@ include __DIR__ . "/modules/admin-header.php";
                 <label for="inputPassword" class="col-sm-3 col-form-label">Új jelszó:</label>
                 <div class="col-sm-9">
                     <input type="password" class="form-control" id="inputPassword" name="password"
-                        placeholder="••••••••" required>
+                        placeholder="••••••••">
                 </div>
             </div>
             <div class="mb-3 row">
@@ -75,7 +76,7 @@ include __DIR__ . "/modules/admin-header.php";
                         accept="image/png, image/jpeg, image/jpg, image/gif">
                 </div>
             </div> -->
-            <button type="submit" class="btn btn-success hozzaadas" id="create_user">Létrehozás</button>
+            <button type="submit" class="btn btn-success hozzaadas" id="create_user">Mentés</button>
         </div>
     </form>
 </div>

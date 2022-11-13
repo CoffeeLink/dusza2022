@@ -1,6 +1,8 @@
 <?php
 
+require __DIR__ . "/lib/utils.php";
 $errorMessages = require __DIR__ . "/config/error-messages.php";
+
 
 //TODO: 1. legyen értelmük :D
 $errorTitle = $_GET['errorTitle'] ?? null;
