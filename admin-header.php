@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . "/lib/utils.php";
 $base_url = (require __DIR__ . "/config/config.php")['base_url'];
+$settings = json_decode(file_get_contents(__DIR__ . "/settings/settings.json"), true);
 
 if (!isset($_SESSION)) {
     session_start();
@@ -35,6 +36,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     <!-- Saját CSS behívása -->
     <link rel="stylesheet" href="./css/admin.css" />
     <title>Vezérlőpult</title>
+
+    <?php include __DIR__ . "/head.php" ?>
 </head>
 
 <body>
@@ -61,12 +64,12 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <ul class="dropdown-menu text-small shadow">
                 <li>
                     <a class="dropdown-item" href="#">Saját oldalak megtekintése</a>
-                    <a class="dropdown-item" href="#">Saját profil szerkesztése</a>
+                    <a class="dropdown-item" href="./profile.php">Saját profil szerkesztése</a>
                 </li>
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="#">Kijelentkezés</a></li>
+                <li><a class="dropdown-item" href="./handlers/logout.php">Kijelentkezés</a></li>
             </ul>
         </div>
     </header>
