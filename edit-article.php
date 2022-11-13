@@ -16,13 +16,13 @@ $stmt->execute([$article_id]);
 $article = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!checkPermission($token, 'MODERATOR') && getUserId($_SESSION['jwt_token']) != $article['author_user_id']) {
-  header("Location: $base_url/");
+  header("Location: $base_url/something-went-wrong.php?errorTitle=Permission%20denied&errorDescription=You%20do%20not%20have%20permission%20to%20edit%20this%20article.&errorCode=403");
 
   return;
 }
 
 if (!$article) {
-  header("Location: $base_url/");
+  header("Location: $base_url/something-went-wrong.php?errorTitle=Article%20not%20found&errorDescription=The%20article%20you%20are%20looking%20for%20does%20not%20exist.&errorCode=404");
 }
 
 $page_id = $article['page_id'];
