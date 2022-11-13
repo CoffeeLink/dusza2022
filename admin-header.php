@@ -1,3 +1,22 @@
+<?php
+require_once __DIR__ . "/lib/utils.php";
+$base_url = (require __DIR__ . "/config/config.php")['base_url'];
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$token = $_SESSION['jwt_token'] ?? null;
+
+$user_id = getUserId($token);
+
+$pdo = connect_mysql();
+$sql = "SELECT * FROM users WHERE user_id = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$user_id]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="hu">
 
@@ -31,7 +50,11 @@
         <div class="dropdown d-flex">
             <a href="#" class="d-flex align-items-center link-dark text-decoration-none" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                <strong class="px-2">Vezetéknév Keresztnév</strong>
+                <strong class="px-2">
+                    <?php
+                    echo $user['last_name'] . ' ' . $user['first_name'] . ' (' . $user['user_name'] . ')';
+                    ?>
+                </strong>
                 <img src="./img/default_profile_picture.png" alt="" width="32" height="32"
                     class="rounded-circle me-2 profile_pic" />
             </a>
