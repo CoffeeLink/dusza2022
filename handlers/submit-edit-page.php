@@ -23,7 +23,7 @@ $banner_img_url = $_POST['banner_img_url'];
 
 $pdo = connect_mysql();
 
-$sql = "UPDATE pages SET title = ?, description = ?, content = ?, edited_at = NOW(), edited_by_user_id = ?, img_url = ?, banner_img_url = ? WHERE page_id = ?";
+$sql = "UPDATE pages SET title = ?, description = ?, content = ?, edited_at = default, edited_by_user_id = ?, img_url = ?, banner_img_url = ? WHERE page_id = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$title, $description, $content, $user_id, $img_url, $banner_img_url, $page_id]);
 

@@ -25,7 +25,7 @@ if(!checkPermission($token, 'MODERATOR') && getUserId($token) != $article['autho
     return;
 }
 
-$sql = "UPDATE articles SET title = ?, description = ?, content = ?, edited_at = NOW(), edited_by_user_id = ?, img_url = ? WHERE article_id = ?";
+$sql = "UPDATE articles SET title = ?, description = ?, content = ?, edited_at = default, edited_by_user_id = ?, img_url = ? WHERE article_id = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$title, $description, $content, getUserId($token), $img_url, $article_id]);
 
