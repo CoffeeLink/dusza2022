@@ -10,6 +10,8 @@ include __DIR__ . "/modules/header.php";
 <body>
     <div class="row">
         <div class="col-xl-3 col-lg-2 col-sm-0"></div>
+
+        <!-- Bejelentkezés űrlap -->
         <div class="col-xl-6 col-lg-8 col-sm-12 border border-info rounded bg-info bg-opacity-10 px-4">
             <h1 class="text-center">Bejelentkezés</h1>
             <form action="./handlers/authorize.php" method="POST">
@@ -27,10 +29,10 @@ include __DIR__ . "/modules/header.php";
                     </div>
 
                     <input class="btn btn-primary teljes my-4 py-2" type="submit" value="Bejelentkezés" id="#frmLogin">
-
             </form>
-
         </div>
+
+
         <div class="col-xl-3 col-lg-2 col-sm-0"></div>
     </div>
     </div>
