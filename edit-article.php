@@ -6,6 +6,12 @@ session_start(); // Start the session.
 
 $token = $_SESSION['jwt_token'] ?? null;
 
+if (!checkPermission($token, 'EDITOR')) {
+  header("Location: $base_url/something-went-wrong.php?code=403");
+
+  return;
+}
+
 $article_id = $_GET['article'];
 
 $pdo = connect_mysql();

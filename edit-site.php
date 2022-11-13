@@ -1,6 +1,17 @@
 <?php
 include __DIR__ . "/lib/utils.php";
 include __DIR__ . "/vendor/autoload.php";
+$base_url = (require __DIR__ . "/config/config.php")['base_url'];
+
+session_start(); // Start the session.
+
+$token = $_SESSION['jwt_token'] ?? null;
+
+if(!checkPermission($token, 'WEBMASTER')) {
+    header("Location: $base_url/somsthing-went-wrong.php?code=403");
+
+    return;
+}
 
 $settings = json_decode(file_get_contents(__DIR__ . "/settings/settings.json"), true);
 

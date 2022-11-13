@@ -16,7 +16,7 @@ $stmt->execute([$page]);
 $page = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$page) {
-  header("Location: $base_url/something-went-wrong.php?errorTitle=Page%20not%20found&errorDescription=The%20page%20you%20are%20looking%20for%20does%20not%20exist.&errorCode=404");
+  header("Location: $base_url/something-went-wrong.php?code=404");
 }
 
 $page_id = $page['page_id'];
@@ -76,71 +76,104 @@ if ($error == 'page-has-subpages') {
 ?>
 <div class="row">
 
-    <h1 class="focim"><?= htmlspecialchars($title); ?></h1>
+  <h1 class="focim">
+    <?= htmlspecialchars($title); ?>
+  </h1>
 
-    <div class="col-6">
-        <h5>Elérési útvonal:
-            <?php
+  <div class="col-6">
+    <h5>Elérési útvonal:
+      <?php
       foreach ($route as $page) {
         echo "<a href='./view-page.php?page=" . htmlspecialchars($page['page_id']) . "'>" . htmlspecialchars($page['title']) . "</a> / ";
       }
       ?>
-        </h5>
-    </div>
-    <div class="col-6">
-        <a class="btn btn-danger jobbra mx-1"
-            href="./handlers/submit-delete-page.php?page=<?php echo htmlspecialchars($page_id); ?>">Oldal törlése</a>
-        <a class="btn btn-success jobbra mx-1"
-            href="./edit-page.php?page=<?php echo htmlspecialchars($page_id); ?>">Oldal szerkesztése</a>
-        <a class="btn btn-primary jobbra mx-1"
-            href="./add-article.php?page=<?php echo htmlspecialchars($page_id); ?>">Cikk hozzáadása</a>
-        <a class="btn btn-primary jobbra mx-1"
-            href="./add-page.php?parent_page=<?php echo htmlspecialchars($page_id); ?>">Aloldal hozzáadása</a>
+    </h5>
+  </div>
+  <div class="col-6">
+    <?php
+    $token = $_SESSION['token'] ?? null;
 
-    </div>
+    if (checkPermission($token, 'MODERATOR')) {
+    ?>
+    <a class="btn btn-danger jobbra mx-1"
+      href="./handlers/submit-delete-page.php?page=<?php echo htmlspecialchars($page_id); ?>">Oldal törlése</a>
+    <a class="btn btn-success jobbra mx-1" href="./edit-page.php?page=<?php echo htmlspecialchars($page_id); ?>">Oldal
+      szerkesztése</a>
+    <?php
+    }
+    ?>
+    <?php
+    if (checkPermission($token, 'EDITOR')) {
+    ?>
+    <a class="btn btn-primary jobbra mx-1" href="./add-article.php?page=<?php echo htmlspecialchars($page_id); ?>">Cikk
+      hozzáadása</a>
+    <?php
+    }
+    ?>
+    <?php
+    if (checkPermission($token, 'MODERATOR')) {
+    ?>
+    <a class="btn btn-primary jobbra mx-1"
+      href="./add-page.php?parent_page=<?php echo htmlspecialchars($page_id); ?>">Aloldal hozzáadása</a>
+    <?php
+    }
+    ?>
+
+  </div>
 </div>
 
 <h3 class="py-3">
-    <?php echo htmlspecialchars($description); ?>
+  <?php echo htmlspecialchars($description); ?>
 </h3>
 
 <div class="p-5 tartalom">
-    <?php
+  <?php
   echo Markdown::defaultTransform($content);
   ?>
 </div>
 
 <div class="row">
-    <?php foreach ($articles as $article) {
+  <?php foreach ($articles as $article) {
     $createdUser = getUserById($article['author_user_id']);
     $createdUserName = $createdUser['last_name'] . ' ' . $createdUser['first_name'];
   ?>
-    <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="card">
-            <!-- Indexkép -->
-            <img class="img-fluid" src="./img/default_image.png" alt="Indexkép" />
+  <div class="col-lg-4 col-md-6 col-sm-12">
+    <div class="card">
+      <!-- Indexkép -->
+      <img class="img-fluid" src="<?php
+    if ($article['img_url'] == null || $article['img_url'] == '') {
+      echo $base_url . '/img/default_image.png';
+    } else {
+      echo $article['img_url'];
+    }
+      ?>" alt="Indexkép">
 
-            <!-- Bejegyzés megjelenő adatai -->
-            <h3><?= $article['title'] ?></h3>
-            <p class="info"><?= $createdUserName ?> | <?= $article['created_at'] ?></p>
-            <p class="tartalom">
-                <?= $article['description'] ?>
-            </p>
+      <!-- Bejegyzés megjelenő adatai -->
+      <h3>
+        <?= $article['title'] ?>
+      </h3>
+      <p class="info">
+        <?= $createdUserName ?> | <?= $article['created_at'] ?>
+      </p>
+      <p class="tartalom">
+        <?= $article['description'] ?>
+      </p>
 
-            <!-- Tovább olvasom gomb -->
-            <div class="col-6">
-                <a href="#">
-                    <button type="button" class="btn btn-primary tovabb-olvasom">
-                        Tovább olvasom
-                    </button></a>
-            </div>
-        </div>
+      <!-- Tovább olvasom gomb -->
+      <div class="col-6">
+        <a href="./view-article.php?article=<?= $article['article_id'] ?>">
+          <button type="button" class="btn btn-primary tovabb-olvasom">
+            Tovább olvasom
+          </button>
+        </a>
+      </div>
     </div>
-    <?php } ?>
-    </ul>
-    <h3 class="py-3">Aloldalak:</h3>
-    <ul class="list-group">
-        <?php
+  </div>
+  <?php } ?>
+  </ul>
+  <h3 class="py-3">Aloldalak:</h3>
+  <ul class="list-group">
+    <?php
     foreach ($children as $child) {
       echo "<li class='list-group-item'><a class='text-decoration-none' href='./view-page.php?page=" . htmlspecialchars($child['page_id']) . "'><b>" . htmlspecialchars($child['title']) . "</b> - " . $child['description'] . "</a></li>";
     }

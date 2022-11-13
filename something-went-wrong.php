@@ -1,12 +1,22 @@
 <?php
 
+$errorMessages = require __DIR__ . "/config/error-messages.php";
+
 //TODO: 1. legyen értelmük :D
 $errorTitle = $_GET['errorTitle'] ?? 'Hiba történt';
 $errorDescription = $_GET['errorDescription'] ?? 'Hiba történt';
 $errorCode = $_GET['errorCode'] ?? 'ISMERETLEN';
 $page_title = $errorTitle;
 
-include __DIR__ . "/header.php";
+if ($errorTitle == null) {
+  $errorTitle = $errorMessages[$errorCode]['title'];
+}
+
+if ($errorDescription == null) {
+  $errorDescription = $errorMessages[$errorCode]['description'];
+}
+
+include __DIR__ . "/modules/header.php";
 ?>
 <div class="row py-5 error_kulso">
     <div class="col-sm-12 col-md-6 px-2">

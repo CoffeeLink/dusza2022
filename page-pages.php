@@ -1,5 +1,17 @@
 <?php
 include __DIR__ . "/lib/utils.php";
+$base_url = (require __DIR__ . "/config/config.php")['base_url'];
+
+session_start(); // Start the session.
+
+$token = $_SESSION['jwt_token'] ?? null;
+
+if(!checkPermission($token, 'MODERATOR')) {
+    header("Location: $base_url/something-went-wrong.php?code=403");
+
+    return;
+}
+
 $pdo = connect_mysql();
 $sql = "SELECT * FROM pages ORDER BY created_at DESC";
 $stmt = $pdo->prepare($sql);

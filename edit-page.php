@@ -7,7 +7,7 @@ session_start(); // Start the session.
 $token = $_SESSION['jwt_token'] ?? null;
 
 if (!checkPermission($token, 'MODERATOR')) {
-  header("Location: https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+  header("Location: $base_url/something-went-wrong.php?code=403");
 
   return;
 }
