@@ -1,3 +1,9 @@
+DirectoryIndex index.php
+
+# Remove in production!!!!
+# Zoli
+DirectoryIndex index.php
+
 <Files .htaccess>
     Order allow,deny
     Deny from all
