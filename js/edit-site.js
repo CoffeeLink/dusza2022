@@ -19,7 +19,7 @@ function submitEditSite(e) {
 
     var data = {
       'site_name': document.getElementById('site_name').value,
-      'description': document.getElementById('description').value,
+      'description': document.getElementById('content-editor').value,
       'email': document.getElementById('email').value,
       'icon': icon
     }

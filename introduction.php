@@ -1,5 +1,8 @@
 <?php
 require __DIR__ . "/lib/utils.php";
+require_once __DIR__ . '/vendor/autoload.php';
+use Michelf\Markdown;
+
 $settings = json_decode(file_get_contents(__DIR__ . "/settings/settings.json"), true);
 
 $page_title = "Bemutaatkozás";
@@ -12,7 +15,7 @@ include __DIR__ . "/modules/header.php";
     <div class="col-xl-8 col-lg-10 col-md-12">
         <h1>Bemutatkozás</h1>
         <p>
-            <?= $settings['description'] ?>
+            <?= Markdown::defaultTransform($settings['description']) ?>
         </p>
     </div>
 

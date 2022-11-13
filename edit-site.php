@@ -43,7 +43,7 @@ include __DIR__ . "/modules/admin-header.php";
             <div class="mb-3 row">
                 <label for="inputPassword" class="col-sm-3 col-form-label">Bemutatkozó szöveg:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="description" name="description"
+                    <input type="text" class="form-control" id="content-editor" name="description"
                         placeholder="Ez egy blog oldal." value="<?= htmlspecialchars($description); ?>" required>
                 </div>
             </div>
@@ -57,7 +57,7 @@ include __DIR__ . "/modules/admin-header.php";
                 <label for="icon" class="col-sm-3 col-form-label">Weboldal ikonja:</label>
                 <div class="col-sm-9">
                     <input type="file" class="form-control" id="icon" name="icon"
-                        accept="image/png, image/jpeg, image/jpg, image/gif">
+                        accept="image/png, image/jpeg, image/jpg, image/gif" required>
                 </div>
             </div>
             <button type="submit" class="btn btn-success hozzaadas" id="create_user">Mentés</button>
