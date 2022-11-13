@@ -26,6 +26,15 @@ h1 {
   margin: 14px 0px; 
 }
 
+.error {
+  border-radius: 5px;
+  background-color: #3f82d3;
+}
+
+.error_kulso {
+  font-size: larger;
+}
+
 /* Képek belső margójának beállítása */
 .img-fluid {
   padding-bottom: 20px;
@@ -38,6 +47,10 @@ h1 {
   color: grey;
 }
 
+.jobbra {
+  float: right;
+}
+
 /* footer háttérszínének beállítása */
 .kulso {
   background-color: #333333;
@@ -47,6 +60,7 @@ h1 {
 .search-item {
   padding-left: 20px;
 }
+
 
 /* Tovább olvasom gomb beállítása */
 .tovabb-olvasom {
