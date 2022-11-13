@@ -49,10 +49,10 @@ include __DIR__ . "/admin-header.php";
 
             <tr>
                 <td class="id">
-                    <?= $page['page_id'] ?>
+                    <?= htmlspecialchars($page['page_id']) ?>
                 </td>
                 <td>
-                    <?= $page['title'] ?>
+                    <?= htmlspecialchars($page['title']) ?>
                 </td>
                 <td>
                     <?php
@@ -64,25 +64,25 @@ include __DIR__ . "/admin-header.php";
                 ?>
                 </td>
                 <td>
-                    <?= $page['created_at'] ?>
+                    <?= htmlspecialchars($page['created_at']) ?>
                 </td>
                 <td>
-                    <?= $createdUserName ?> ~
-                        <?= $page['edited_at'] ?>
+                    <?= htmlspecialchars($createdUserName) ?> ~
+                        <?= htmlspecialchars($page['edited_at']) ?>
                 </td>
                 <td>
-                    <?= $editedUserName ?>
+                    <?= htmlspecialchars($editedUserName) ?>
                 </td>
                 <td>
-                    <a href="./view-page.php?page=<?= $page['page_id'] ?>" target="_blank" class="btn btn-success">
+                    <a href="./view-page.php?page=<?= htmlspecialchars($page['page_id']) ?>" target="_blank" class="btn btn-success">
                         <i class="fa-solid fa-eye"></i>
                     </a>
-                    <a class="btn btn-warning kezeles" href="./page-articles.php?page=<?= $page['page_id'] ?>">
+                    <a class="btn btn-warning kezeles" href="./page-articles.php?page=<?= htmlspecialchars($page['page_id']) ?>">
                         <i class="fa-solid fa-rectangle-list"></i>
                     </a>
-                    <a class="btn btn-primary kezeles" href="./edit-page.php?page=<?= $page['page_id'] ?>">
+                    <a class="btn btn-primary kezeles" href="./edit-page.php?page=<?= htmlspecialchars($page['page_id']) ?>">
                         <i class="fa-solid fa-edit"></i></a><a class="btn btn-danger kezeles"
-                        href="./handlers/submit-delete-page.php?page=<?= $page['page_id'] ?>">
+                        href="./handlers/submit-delete-page.php?page=<?= htmlspecialchars($page['page_id']) ?>">
                         <i class="fa-solid fa-ban"></i>
                     </a>
                 </td>
@@ -94,7 +94,7 @@ include __DIR__ . "/admin-header.php";
     </table>
     <!-- Lapozás a következő oldalra -->
     <div class="lapoz">
-        <span class="px-3">Megjelenítve: <b>1-<?= $posts_number ?></b>/<?= $posts_number ?></span>
+        <span class="px-3">Megjelenítve: <b>1-<?= htmlspecialchars($posts_number) ?></b>/<?= htmlspecialchars($posts_number) ?></span>
         <button class="btn btn-secondary">
             <i class="fa-solid fa-arrow-left"></i>
         </button>

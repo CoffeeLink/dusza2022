@@ -30,7 +30,7 @@ $pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach ($pages as $page) {
       $page_id = $page['page_id'];
       $title = $page['title'];
-      echo "<li><a href='./view-page.php?page=$page_id'>$title</a></li>";
+      echo "<li><a href='./view-page.php?page=" . htmlspecialchars($page_id) . "'>$title</a></li>";
     }
     ?>
   </ul>

@@ -50,7 +50,7 @@ if ($parent_page_id != null) {
   <h1>
     <?php
     if ($parent_page_id != null) {
-      echo "Add subpage to $parent_page_title";
+      echo "Add subpage to " . htmlspecialchars($parent_page_title);
     } else {
       echo "Add page";
     }
@@ -59,7 +59,7 @@ if ($parent_page_id != null) {
   <form action="./handlers/submit-add-page.php" method="post">
     <?php
     if ($parent_page_id != null) {
-      echo "<input type='text' name='parent_page_id' value='$parent_page_id' hidden>";
+      echo "<input type='text' name='parent_page_id' value='" . htmlspecialchars($parent_page_id) . "' hidden>";
     }
     ?>
     <input type="text" name="title" placeholder="Title">

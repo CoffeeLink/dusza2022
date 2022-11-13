@@ -46,9 +46,9 @@ include __DIR__ . "/admin-header.php";
             ?>
 
             <tr>
-                <td class="id"><?= $article['article_id'] ?></td>
-                <td class="id"><?= $article['page_id'] ?></td>
-                <td><?= $article['title'] ?></td>
+                <td class="id"><?= htmlspecialchars($article['article_id']) ?></td>
+                <td class="id"><?= htmlspecialchars($article['page_id']) ?></td>
+                <td><?= htmlspecialchars($article['title']) ?></td>
                 <td><?php
                         if ($article['is_visible'] == 1) {
                             echo "Publikus";
@@ -56,16 +56,16 @@ include __DIR__ . "/admin-header.php";
                             echo "Piszkozat";
                         }
                         ?></td>
-                <td><?= $article['created_at'] ?></td>
-                <td><?= $editedBy ?> ~ <?= $article['edited_at'] ?></td>
-                <td><?= $createdBy ?></td>
+                <td><?= htmlspecialchars($article['created_at']) ?></td>
+                <td><?= htmlspecialchars($editedBy) ?> ~ <?= htmlspecialchars($article['edited_at']) ?></td>
+                <td><?= htmlspecialchars($createdBy) ?></td>
                 <td>
-                    <a href="./view-article.php?article=<?= $article['article_id'] ?>" target="_blank"
+                    <a href="./view-article.php?article=<?= htmlspecialchars($article['article_id']) ?>" target="_blank"
                         class="btn btn-success">
                         <i class="fa-solid fa-eye"></i></a><a class="btn btn-primary kezeles"
-                        href="./edit-article.php?article=<?= $article['article_id'] ?>">
+                        href="./edit-article.php?article=<?= htmlspecialchars($article['article_id']) ?>">
                         <i class="fa-solid fa-edit"></i></a><a class="btn btn-danger kezeles"
-                        href="./handlers/submit-delete-article.php?article=<?= $article['article_id'] ?>">
+                        href="./handlers/submit-delete-article.php?article=<?= htmlspecialchars($article['article_id']) ?>">
                         <i class="fa-solid fa-ban"></i>
                     </a>
                 </td>

@@ -82,15 +82,15 @@ $db = null;
     <p>Route:
       <?php
       foreach ($route as $page) {
-        echo "<a href='./view-page.php?page={$page['page_id']}'>{$page['title']}</a> / ";
+        echo "<a href='./view-page.php?page=" . htmlspecialchars($page['page_id']) . "'>" . htmlspecialchars($page['title']) . "</a> / ";
       }
       ?>
     </p>
     <h1>
-      <?php echo $title; ?>
+      <?php echo htmlspecialchars($title); ?>
     </h1>
     <h2>
-      <?php echo $description; ?>
+      <?php echo htmlspecialchars($description); ?>
     </h2>
     <div>
       <?php
@@ -101,22 +101,22 @@ $db = null;
     <ul>
       <?php
       foreach ($children as $child) {
-        echo "<li><a href=./view-page.php?page={$child['page_id']}'>{$child['title']}</a></li>";
+        echo "<li><a href='./view-page.php?page=" . htmlspecialchars($child['page_id']) . "'>" . htmlspecialchars($child['title']) . "</a></li>";
       }
       ?>
     </ul>
-    <a href="./add-page.php?parent_page=<?php echo $page_id; ?>">Add subpage</a>
-    <a href="./edit-page.php?page=<?php echo $page_id; ?>">Edit page</a>
-    <a href="./handlers/submit-delete-page.php?page=<?php echo $page_id; ?>">Delete page</a>
+    <a href="./add-page.php?parent_page=<?php echo htmlspecialchars($page_id); ?>">Add subpage</a>
+    <a href="./edit-page.php?page=<?php echo htmlspecialchars($page_id); ?>">Edit page</a>
+    <a href="./handlers/submit-delete-page.php?page=<?php echo htmlspecialchars($page_id); ?>">Delete page</a>
     <h3>Articles</h3>
     <ul>
       <?php
       foreach ($articles as $article) {
-        echo "<li><a href='./view-article.php?article={$article['article_id']}'>{$article['title']}</a></li>";
+        echo "<li><a href='./view-article.php?article=" . htmlspecialchars($article['article_id']) . "'>" . htmlspecialchars($article['title']) . "</a></li>";
       }
       ?>
     </ul>
-    <a href="./add-article.php?page=<?php echo $page_id; ?>">Add article</a>
+    <a href="./add-article.php?page=<?php echo htmlspecialchars($page_id); ?>">Add article</a>
 </body>
 
 </html>

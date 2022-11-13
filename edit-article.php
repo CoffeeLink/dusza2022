@@ -43,10 +43,10 @@ $pdo = null;
 </head>
 <body>
   <form action="./handlers/submit-edit-article.php" method="POST">
-    <input type="hidden" name="article_id" value="<?php echo $article_id; ?>">
-    <input type="text" name="title" value="<?php echo $title; ?>">
-    <input type="text" name="description" value="<?php echo $description; ?>">
-    <textarea name="content" id="" cols="30" rows="10"><?php echo $content; ?></textarea>
+    <input type="hidden" name="article_id" value="<?php echo htmlspecialchars($article_id); ?>">
+    <input type="text" name="title" value="<?php echo htmlspecialchars($title); ?>">
+    <input type="text" name="description" value="<?php echo htmlspecialchars($description); ?>">
+    <textarea name="content" id="" cols="30" rows="10"><?php echo htmlspecialchars($content); ?></textarea>
     <input type="submit" value="Save">
 </body>
 </html>

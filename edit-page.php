@@ -44,12 +44,12 @@ $pdo = null;
   <title>Document</title>
 </head>
 <body>
-  <h1>Edit <?php echo $title; ?></h1>
+  <h1>Edit <?php echo htmlspecialchars($title); ?></h1>
   <form action="./handlers/submit-edit-page.php" method="POST">
-    <input type="hidden" name="page_id" value="<?php echo $page_id; ?>">
-    <input type="text" name="title" placeholder="Title" value="<?php echo $title; ?>">
-    <input type="text" name="description" placeholder="Description" value="<?php echo $description; ?>">
-    <textarea name="content" id="content-editor" cols="30" rows="10" placeholder="Content"><?php echo $content; ?></textarea>
+    <input type="hidden" name="page_id" value="<?php echo htmlspecialchars($page_id); ?>">
+    <input type="text" name="title" placeholder="Title" value="<?php echo htmlspecialchars($title); ?>">
+    <input type="text" name="description" placeholder="Description" value="<?php echo htmlspecialchars($description); ?>">
+    <textarea name="content" id="content-editor" cols="30" rows="10" placeholder="Content"><?php echo htmlspecialchars($content); ?></textarea>
     <input type="submit" value="Save">
   </form>
 </body>

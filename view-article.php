@@ -56,22 +56,22 @@ $pdo = null;
   <h1>Route:
     <?php
     foreach ($route as $page) {
-      echo "<a href='./view-page.php?page={$page['page_id']}'>{$page['title']}</a> -> ";
+      echo "<a href='./view-page.php?page=" . htmlspecialchars($page['page_id']) . "'>" . htmlspecialchars($page['title']) . "</a> -> ";
     }
-    echo $title;
+    echo htmlspecialchars($title);
     ?>
   </h1>
   <h1>
-    <?php echo $title ?>
+    <?php echo htmlspecialchars($title) ?>
   </h1>
   <p>
-    <?php echo $description ?>
+    <?php echo htmlspecialchars($description) ?>
   </p>
   <div>
     <?php echo Markdown::defaultTransform($content) ?>
   </div>
-  <a href="./edit-article.php?article=<?php echo $article['article_id'] ?>">Edit article</a>
-  <a href="./handlers/submit-delete-article.php?article=<?php echo $article['article_id'] ?>">Delete article</a>
+  <a href="./edit-article.php?article=<?php echo htmlspecialchars($article['article_id']) ?>">Edit article</a>
+  <a href="./handlers/submit-delete-article.php?article=<?php echo htmlspecialchars($article['article_id']) ?>">Delete article</a>
 </body>
 
 </html>

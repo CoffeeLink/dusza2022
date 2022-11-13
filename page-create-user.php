@@ -51,12 +51,6 @@ include __DIR__ . "/admin-header.php";
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="birth_date" class="col-sm-3 col-form-label">Születési dátum:</label>
-                <div class="col-sm-9">
-                    <input type="date" class="form-control" id="birth_date" name="birth_date" max="2022-01-01">
-                </div>
-            </div>
-            <div class="mb-3 row">
                 <label for="permission" class="col-sm-3 col-form-label">Jogosultsági szint:</label>
                 <div class="col-sm-9">
                     <select class="form-select" id="permission" name="permission">

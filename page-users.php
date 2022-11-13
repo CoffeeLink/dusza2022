@@ -45,27 +45,27 @@ include __DIR__ . "/admin-header.php";
 
             <tr>
                 <td class="id">
-                    <?= $user['user_id'] ?>
+                    <?= htmlspecialchars($user['user_id']) ?>
                 </td>
                 <td>
-                    <?= $user['user_name'] ?>
+                    <?= htmlspecialchars($user['user_name']) ?>
                 </td>
                 <td>
-                    <?= $user['email'] ?>
+                    <?= htmlspecialchars($user['email']) ?>
                 </td>
                 <td>
-                    <?= $user['last_name'] . ' ' . $user['first_name'] ?>
+                    <?= htmlspecialchars($user['last_name']) . ' ' . htmlspecialchars($user['first_name']) ?>
                 </td>
                 <td>
-                    <?= $user['permission'] ?>
+                    <?= htmlspecialchars($user['permission']) ?>
                 </td>
                 <td>
-                    <?= $user['registered_at'] ?>
+                    <?= htmlspecialchars($user['registered_at']) ?>
                 </td>
                 <td>
-                    <a class="btn btn-primary kezeles" href="./edit-page.php?page=<?= $user['user_id'] ?>">
+                    <a class="btn btn-primary kezeles" href="./edit-page.php?page=<?= htmlspecialchars($user['user_id']) ?>">
                         <i class="fa-solid fa-edit"></i></a><a class="btn btn-danger kezeles"
-                        href="./handlers/submit-delete-page.php?page=<?= $user['user_id'] ?>">
+                        href="./handlers/submit-delete-page.php?page=<?= htmlspecialchars($user['user_id']) ?>">
                         <i class="fa-solid fa-ban"></i>
                     </a>
                 </td>
@@ -77,7 +77,7 @@ include __DIR__ . "/admin-header.php";
     </table>
     <!-- Lapozás a következő oldalra -->
     <div class="lapoz">
-        <span class="px-3">Megjelenítve: <b>1-<?= $posts_number ?></b>/<?= $posts_number ?></span>
+        <span class="px-3">Megjelenítve: <b>1-<?= htmlspecialchars($posts_number) ?></b>/<?= htmlspecialchars($posts_number) ?></span>
         <button class="btn btn-secondary">
             <i class="fa-solid fa-arrow-left"></i>
         </button>

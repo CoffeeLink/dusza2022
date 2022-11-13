@@ -52,7 +52,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 aria-expanded="false">
                 <strong class="px-2">
                     <?php
-                    echo $user['last_name'] . ' ' . $user['first_name'] . ' (' . $user['user_name'] . ')';
+                    echo htmlspecialchars($user['last_name']) . ' ' . htmlspecialchars($user['first_name']) . ' (' . htmlspecialchars($user['user_name']) . ')';
                     ?>
                 </strong>
                 <img src="./img/default_profile_picture.png" alt="" width="32" height="32"

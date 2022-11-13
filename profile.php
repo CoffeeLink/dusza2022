@@ -31,7 +31,7 @@ include __DIR__ . "/admin-header.php";
                 <label for="user_name" class="col-sm-3 col-form-label">Felhasználónév:</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="user_name" name="user_name" placeholder="john_doe"
-                        value="<?php echo $user["user_name"] ?>" required>
+                        value="<?php echo htmlspecialchars($user["user_name"]) ?>" required>
                 </div>
             </div>
             <div class="mb-3 row">
@@ -45,20 +45,20 @@ include __DIR__ . "/admin-header.php";
                 <label for="email" class="col-sm-3 col-form-label">Email-cím:</label>
                 <div class="col-sm-9">
                     <input type="email" class="form-control" id="email" name="email" placeholder="email@example.com"
-                        value="<?php echo $user["email"] ?>" required>
+                        value="<?php echo htmlspecialchars($user["email"]) ?>" required>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="lastname" class="col-sm-3 col-form-label">Vezetéknév:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="lastname" name="last_name" placeholder="Doe" value="<?php echo $user["last_name"] ?>" required>
+                    <input type="text" class="form-control" id="lastname" name="last_name" placeholder="Doe" value="<?php echo htmlspecialchars($user["last_name"]) ?>" required>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="first_name" class="col-sm-3 col-form-label">Keresztnév:</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="first_name" name="first_name" placeholder="John"
-                        value="<?php echo $user["first_name"] ?>" required>
+                        value="<?php echo htmlspecialchars($user["first_name"]) ?>" required>
                 </div>
             </div>
             <!-- I commented out this because user can't change his permission level -->

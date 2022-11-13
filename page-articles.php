@@ -27,7 +27,7 @@ include __DIR__ . "/admin-header.php";
         </div>
         <?php if ($page_id != 0) { ?>
         <div class="col-6">
-            <a class="btn btn-secondary hozzaadas" href="./add-article.php?page=<?= $page_id ?>">Új
+            <a class="btn btn-secondary hozzaadas" href="./add-article.php?page=<?= htmlspecialchars($page_id) ?>">Új
                 hozzáadása</a>
         </div>
         <?php } ?>
@@ -59,13 +59,13 @@ include __DIR__ . "/admin-header.php";
 
             <tr>
                 <td class="id">
-                    <?= $article['article_id'] ?>
+                    <?= htmlspecialchars($article['article_id']) ?>
                 </td>
                 <td class="id">
-                    <?= $article['page_id'] ?>
+                    <?= htmlspecialchars($article['page_id']) ?>
                 </td>
                 <td>
-                    <?= $article['title'] ?>
+                    <?= htmlspecialchars($article['title']) ?>
                 </td>
                 <td>
                     <?php
@@ -77,21 +77,21 @@ include __DIR__ . "/admin-header.php";
                 ?>
                 </td>
                 <td>
-                    <?= $article['created_at'] ?>
+                    <?= htmlspecialchars($article['created_at']) ?>
                 </td>
                 <td>
-                    <?= $editedBy ?> ~ <?= $article['edited_at'] ?>
+                    <?= htmlspecialchars($editedBy) ?> ~ <?= htmlspecialchars($article['edited_at']) ?>
                 </td>
                 <td>
                     <?= $createdBy ?>
                 </td>
                 <td>
-                    <a href="./view-article.php?article=<?= $article['article_id'] ?>" target="_blank"
+                    <a href="./view-article.php?article=<?= htmlspecialchars($article['article_id']) ?>" target="_blank"
                         class="btn btn-success">
                         <i class="fa-solid fa-eye"></i></a><a class="btn btn-primary kezeles"
-                        href="./edit-article.php?article=<?= $article['article_id'] ?>">
+                        href="./edit-article.php?article=<?= htmlspecialchars($article['article_id']) ?>">
                         <i class="fa-solid fa-edit"></i></a><a class="btn btn-danger kezeles"
-                        href="./handlers/submit-delete-article.php?article=<?= $article['article_id'] ?>">
+                        href="./handlers/submit-delete-article.php?article=<?= htmlspecialchars($article['article_id']) ?>">
                         <i class="fa-solid fa-ban"></i>
                     </a>
                 </td>
@@ -102,7 +102,7 @@ include __DIR__ . "/admin-header.php";
     </table>
     <!-- Lapozás a következő oldalra -->
     <div class="lapoz">
-        <span class="px-3">Megjelenítve: <b>1-<?= $posts_number ?></b>/<?= $posts_number ?></span>
+        <span class="px-3">Megjelenítve: <b>1-<?= htmlspecialchars($posts_number) ?></b>/<?= htmlspecialchars($posts_number) ?></span>
         <button class="btn btn-secondary">
             <i class="fa-solid fa-arrow-left"></i>
         </button>
