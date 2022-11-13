@@ -20,8 +20,7 @@
     <link rel="stylesheet" href="./css/page.css" />
     <title><?= $page_title ?></title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <?php include __DIR__ . "/head.php" ?>
 </head>
 
 <body>
