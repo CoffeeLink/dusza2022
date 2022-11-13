@@ -83,12 +83,14 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             </a>
             <hr />
             <ul class="nav nav-pills flex-column mb-auto oldalsav">
+                <?php if(checkPermission($token, "MODERATOR")) { ?>
                 <li class="nav-item">
                     <a href="./dashboard.php" class="nav-link link-dark" aria-current="page" id="vezerlopult">
                         <i class="fa-solid fa-gauge-high icon"></i> Vezérlőpult
                     </a>
                 </li>
                 <hr />
+                <?php } ?>
                 <li>
                     <a href="./profile.php" class="nav-link link-dark" id="profilom">
                         <i class="fa-solid fa-user icon"></i>
@@ -96,6 +98,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                     </a>
                 </li>
                 <hr />
+                <?php if(checkPermission($token, "WEBMASTER")) { ?>
                 <li>
                     <a href="./edit-site.php" class="nav-link link-dark" id="portal_kezeles">
                         <i class="fa-solid fa-gears icon"></i>
@@ -115,12 +118,15 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                     </a>
                 </li>
                 <hr />
+                <?php } ?>
+                <?php if(checkPermission($token, "MODERATOR")) { ?>
                 <li>
                     <a href="./page-pages.php" class="nav-link link-dark" id="oldalak">
                         <i class="fa-solid fa-file-lines icon"></i>
                         Oldalak
                     </a>
                 </li>
+                <?php } ?>
                 <li>
                     <a href="./page-articles.php" class="nav-link link-dark" id="bejegyzesek">
                         <i class="fa-solid fa-pen icon"></i>
