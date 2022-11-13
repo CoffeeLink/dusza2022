@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../lib/utils.php";
 // Start the session.
 if (!isset($_SESSION)) {
     session_start();
@@ -52,6 +53,10 @@ $settings = json_decode(file_get_contents(__DIR__ . "/../settings/settings.json"
             <ul class="nav nav-pills">
                 <li class="nav-item">
                     <a href="./" class="nav-link">Főoldal</a>
+                </li>
+                <li class="nav-item">
+                    <a href="./docs/dokumentacio.pdf" class="nav-link" target="_blank">Dokumentáció <i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </li>
                 <?php
                 if (checkPermission($token, 'MODERATOR')) {

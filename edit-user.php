@@ -86,13 +86,13 @@ $page_title = "Felhasználó szerkesztése";
                     </select>
                 </div>
             </div>
-            <div class="mb-3 row">
+            <!-- <div class="mb-3 row">
                 <label for="profile_picture" class="col-sm-3 col-form-label">Profilkép</label>
                 <div class="col-sm-9">
                     <input type="file" class="form-control" id="profile_picture" name="profile_picture"
                         accept="image/png, image/jpeg, image/jpg, image/gif">
                 </div>
-            </div>
+            </div> -->
             <button type="submit" class="btn btn-success hozzaadas" id="create_user">Mentés</button>
         </div>
     </form>

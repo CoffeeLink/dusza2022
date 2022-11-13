@@ -10,7 +10,7 @@ if (!isset($_SESSION)) {
 $token = $_SESSION['jwt_token'] ?? null;
 
 if (!checkPermission($token, 'MODERATOR')) {
-  header("Location: $base_url/somsthing-went-wrong.php?code=403");
+  header("Location: $base_url/something-went-wrong.php?code=403");
 
   return;
 }
