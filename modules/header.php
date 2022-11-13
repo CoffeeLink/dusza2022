@@ -54,6 +54,10 @@ $settings = json_decode(file_get_contents(__DIR__ . "/../settings/settings.json"
                 <li class="nav-item">
                     <a href="./" class="nav-link">Főoldal</a>
                 </li>
+                <li class="nav-item">
+                    <a href="./docs/dokumentacio.pdf" class="nav-link" target="_blank">Dokumentáció <i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </li>
                 <?php
                 if (checkPermission($token, 'MODERATOR')) {
                 echo '<li class="nav-item"><a href="./dashboard.php" class="nav-link">Vezérlőpult</a></li>';
