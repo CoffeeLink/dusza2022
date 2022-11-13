@@ -29,5 +29,5 @@ if (array_key_exists('jwt_token', $_SESSION) and checkPermission($token, "WEBMAS
         header("location: $base_url/something-went-wrong.php?errorTitle=Regisztrácios Hiba&errorMessage=Hiba történt a felhasználó létrehozásakor!&errorCode=POST_ERROR");
     }
 } else {
-    header("Location: https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    header("Location: $base_url/something-went-wrong.php?code=403");
 }

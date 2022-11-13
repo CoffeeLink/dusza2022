@@ -8,6 +8,8 @@ $article = $_GET['article'];
 
 $pdo = connect_mysql();
 
+$token = $_SESSION['jwt_token'] ?? null;
+
 $sql = "SELECT * FROM articles WHERE article_id = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$article]);
@@ -15,6 +17,12 @@ $article = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$article) {
   header("Location: $base_url/something-went-wrong.php?code=404");
+
+  return;
+}
+
+if (!$article['is_visible'] && !checkPermission($token ?? null, 'MODERATOR')) {
+  header("Location: $base_url/something-went-wrong.php?code=403");
 
   return;
 }
@@ -68,8 +76,17 @@ $pdo = null;
   <div>
     <?php echo Markdown::defaultTransform($article['content']) ?>
   </div>
+  <?php
+  $token = $_COOKIE['jwt_token'] ?? null;
+
+  if (checkPermission($token, 'MODERATER')) {
+  ?>
   <a href="./edit-article.php?article=<?php echo htmlspecialchars($article['article_id']) ?>">Edit article</a>
-  <a href="./handlers/submit-delete-article.php?article=<?php echo htmlspecialchars($article['article_id']) ?>">Delete article</a>
+  <a href="./handlers/submit-delete-article.php?article=<?php echo htmlspecialchars($article['article_id']) ?>">Delete
+    article</a>
+  <?php
+  }
+  ?>
 </body>
 
 </html>

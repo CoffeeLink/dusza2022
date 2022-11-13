@@ -1,3 +1,12 @@
+<?php
+// Start the session.
+if (!isset($_SESSION)) {
+  session_start();
+}
+
+$settings = json_decode(file_get_contents(__DIR__ . "/../settings/settings.json"), true);
+?>
+
 <!DOCTYPE html>
 <html lang="hu">
 
@@ -18,7 +27,9 @@
 
     <!-- Saját CSS behívása -->
     <link rel="stylesheet" href="./css/page.css" />
-    <title><?= $page_title ?></title>
+    <title>
+        <?= $page_title ?>
+    </title>
 
     <?php include __DIR__ . "/global-head.php" ?>
 </head>
@@ -30,7 +41,7 @@
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
             <!-- Weboldal főcímének megjelenítése -->
             <a href="./" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                <span class="fs-4">Weboldal címe</span>
+                <span class="fs-4"><?= $settings['name'] ?></span>
             </a>
 
             <!-- Navigációs sor hivatkozásai -->
@@ -41,7 +52,11 @@
                 <li class="nav-item"><a href="#" class="nav-link">Oldal1</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Oldal2</a></li>
                 <li class="nav-item">
+                    <?php if (isset($_SESSION['jwt_token'])): ?>
+                    <a href="./handlers/logout.php" class="nav-link">Kijelentkezés</a>
+                    <?php else: ?>
                     <a href="./login.php" class="nav-link">Bejelentkezés</a>
+                    <?php endif; ?>
                 </li>
                 <li class="nav-item search-item">
                     <input type="search" class="form-control" placeholder="Keresés" aria-label="Search" />

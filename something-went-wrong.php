@@ -3,10 +3,15 @@
 $errorMessages = require __DIR__ . "/config/error-messages.php";
 
 //TODO: 1. legyen értelmük :D
-$errorTitle = $_GET['errorTitle'] ?? 'Hiba történt';
-$errorDescription = $_GET['errorDescription'] ?? 'Hiba történt';
-$errorCode = $_GET['errorCode'] ?? 'ISMERETLEN';
+$errorTitle = $_GET['errorTitle'] ?? null;
+$errorDescription = $_GET['errorDescription'] ?? null;
+$errorCode = $_GET['code'] ?? 'ISMERETLEN';
 $page_title = $errorTitle;
+
+if ($errorCode == 'ISMERETLEN') {
+  $errorTitle = 'Hiba';
+  $errorDescription = 'Ismeretlen hiba történt';
+}
 
 if ($errorTitle == null) {
   $errorTitle = $errorMessages[$errorCode]['title'];

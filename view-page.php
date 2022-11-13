@@ -2,8 +2,11 @@
 require_once __DIR__ . '/vendor/autoload.php';
 require __DIR__ . "/lib/utils.php";
 $base_url = (require __DIR__ . "/config/config.php")['base_url'];
-
 use Michelf\Markdown;
+
+session_start(); // Start the session.
+
+$token = $_SESSION['jwt_token'] ?? null;
 
 $page = $_GET['page'];
 
@@ -17,6 +20,14 @@ $page = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$page) {
   header("Location: $base_url/something-went-wrong.php?code=404");
+
+  return;
+}
+
+if (!$page['is_visible'] && !checkPermission($token ?? null, 'MODERATOR')) {
+  header("Location: $base_url/something-went-wrong.php?code=403");
+
+  return;
 }
 
 $page_id = $page['page_id'];
@@ -48,13 +59,13 @@ array_push($route, [
 ]);
 
 // Get the children of the current page
-$sql = "SELECT * FROM pages WHERE parent_page_id = ?";
+$sql = "SELECT * FROM pages WHERE parent_page_id = ? AND is_visible = 1";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$page_id]);
 $children = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Get the articles of the current page
-$sql = "SELECT * FROM articles WHERE page_id = ?";
+$sql = "SELECT * FROM articles WHERE page_id = ? AND is_visible = 1";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$page_id]);
 $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -91,8 +102,7 @@ if ($error == 'page-has-subpages') {
   </div>
   <div class="col-6">
     <?php
-    $token = $_SESSION['token'] ?? null;
-
+    $token = $_SESSION['jwt_token'] ?? null;
     if (checkPermission($token, 'MODERATOR')) {
     ?>
     <a class="btn btn-danger jobbra mx-1"

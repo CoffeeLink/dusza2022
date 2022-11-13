@@ -35,9 +35,9 @@ include __DIR__ . "/modules/admin-header.php";
     <form action="./handlers/register.php" method="POST">
         <div class="container">
             <div class="mb-3 row">
-                <label for="user_name" class="col-sm-3 col-form-label">Felhasználónév:</label>
+                <label for="username" class="col-sm-3 col-form-label">Felhasználónév:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="user_name" name="user_name" placeholder="john_doe"
+                    <input type="text" class="form-control" id="username" name="username" placeholder="john_doe"
                         value="<?php echo htmlspecialchars($user["user_name"]) ?>" required>
                 </div>
             </div>
@@ -68,25 +68,13 @@ include __DIR__ . "/modules/admin-header.php";
                         value="<?php echo htmlspecialchars($user["first_name"]) ?>" required>
                 </div>
             </div>
-            <!-- I commented out this because user can't change his permission level -->
-            <!-- --Zoli-- -->
             <!-- <div class="mb-3 row">
-                <label for="permission" class="col-sm-3 col-form-label">Jogosultsági szint:</label>
-                <div class="col-sm-9">
-                    <select class="form-select" id="permission">
-                        <option value="EDITOR" selected>Szerkesztő</option>
-                        <option value="MODERATOR">Moderátor</option>
-                        <option value="WEBMASTER">Webmester</option>
-                    </select>
-                </div>
-            </div> -->
-            <div class="mb-3 row">
                 <label for="profile_picture" class="col-sm-3 col-form-label">Profilkép</label>
                 <div class="col-sm-9">
                     <input type="file" class="form-control" id="profile_picture" name="profile_picture"
                         accept="image/png, image/jpeg, image/jpg, image/gif">
                 </div>
-            </div>
+            </div> -->
             <button type="submit" class="btn btn-success hozzaadas" id="create_user">Létrehozás</button>
         </div>
     </form>
