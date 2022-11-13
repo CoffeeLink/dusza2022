@@ -13,7 +13,7 @@ if (!checkPermission($token, 'MODERATOR')) {
 }
 
 // Might be null if the page is the root page
-$parent_page_id = $_GET['page'] ?? null;
+$parent_page_id = $_GET['parent_page'] ?? null;
 
 $pdo = connect_mysql();
 
@@ -64,7 +64,7 @@ include __DIR__ . "/modules/header.php";
           if (this.value == 'root') {
             window.location.href = './add-page.php';
           } else {
-            window.location.href = './add-page.php?page=' + this.value;
+            window.location.href = './add-page.php?parent_page=' + this.value;
           }
           " required>
               <option value="root" <?= $parent_page_id==null ? "selected" : "" ?> >Nincs szülő elem</option>
